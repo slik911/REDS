@@ -3,14 +3,18 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Traits\GeneratesUniqueIds;
+use Cloudinary\Api\Provisioning\UserRole;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, GeneratesUniqueIds, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -18,9 +22,17 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'uuid',
+        'first_name',
+        'last_name',
         'email',
-        'password',
+        'phone_number',
+        'address',
+        'province',
+        'city',
+        'postal_code',
+        'image_id',
+        
     ];
 
     /**
@@ -29,7 +41,7 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $hidden = [
-        'password',
+        // 'password',
         'remember_token',
     ];
 
@@ -42,7 +54,22 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            // 'password' => 'hashed',
         ];
     }
+
+    public function image()
+    {
+        return $this->hasOne(Upload::class, 'uuid', 'image_id');
+    }
+
+    public function user_role(){
+        return $this->hasOne(UserRole::class, 'user_id', 'id');
+    }
+
+    public function role()
+    {
+        return $this->hasOneThrough(Role::class, UserRoles::class, 'user_id', 'id', 'id', 'role_id');
+    }
+
 }

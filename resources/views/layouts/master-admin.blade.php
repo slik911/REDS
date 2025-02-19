@@ -10,39 +10,74 @@
 	<meta name="author" content="AdminKit">
 	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link rel="canonical" href="https://demo.adminkit.io/pages-blank.html" />
-        @vite(['resources/css/app-admin.css', 'resources/js/app-admin.js'])
+    @vite(['resources/css/app-admin.css', 'resources/js/app-admin.js', 'resources/js/datatables.js'])
 	<title>@yield('title')</title>
-
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
 	<style>
 		body {
 			opacity: 0;
+			font-family: 'Inter', sans-serif;
 		}
+		.sidebar [data-bs-toggle=collapse]::after {
+			border: solid;
+			border-width: 0 .075rem .075rem 0;
+			content: " ";
+			display: inline-block;
+			padding: 2px;
+			position: absolute;
+			right: 1.5rem; /* Adjust position */
+			top: 1.2rem;   /* Adjust position */
+			transform: rotate(225deg); /* Right arrow (default) */
+			transition: transform 0.2s ease-out;
+		}
+
+		/* Expanded state */
+		.sidebar [data-bs-toggle=collapse].collapsed::after {
+			transform: rotate(45deg); /* Downward arrow */
+		}
+
+		.sidebar-dropdown .sidebar-link::before {
+			content: "→"; /* Right arrow */
+			display: inline-block;
+			position: relative;
+			left: -14px; /* Adjust spacing */
+			transform: translateX(0);
+			transition: transform 0.1s ease, content 0.1s ease;
+		}
+
+		/* Downward arrow for expanded state */
+		.sidebar-dropdown .sidebar-link.collapsed::before {
+			content: "↓"; /* Downward arrow */
+			transform: translateX(0); /* Keeps arrow in place */
+		}
+
+		.sidebar-dropdown{
+			padding-left: 1.2rem;
+			font-size: 0.8rem;
+		}
+
+		.btn-primary{
+			background-color: #222E3C;
+			color: white;
+			border: 1px solid #222E3C;
+			transition: 0.3s;
+		}
+
+		a.page-link{
+			background-color: #fff !important;
+			color: #222E3C !important;
+
+			/* transition: 0.3s; */
+		}
+
 	</style>
-	<!-- END SETTINGS -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120946860-10"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-120946860-10', { 'anonymize_ip': true });
-    </script>
 </head>
-<!--
-  HOW TO USE: 
-  data-theme: default (default), dark, light, colored
-  data-layout: fluid (default), boxed
-  data-sidebar-position: left (default), right
-  data-sidebar-layout: default (default), compact
--->
-
 <body data-theme="default" data-layout="fluid" data-sidebar-position="left" data-sidebar-layout="default">
+	
 	<div class="wrapper">
         @include('includes.sidebar')
-
+		
 		<div class="main">
 			@include('includes.navbar')
 
@@ -52,12 +87,19 @@
                 <div class="d-flex justify-content-between align-items-center" style="display: flex; justify-content: space-between; align-items: center;">
                     <h3 class="h3 mb-3" style="margin: 0; font-size: 1.5rem;">@yield('title')</h3>
                     <span style="font-size: .8rem; color: black;">
-                        <strong style="font-weight: bold;">LoggedIn User:</strong> {{Auth::user()->name}}
+                        <strong style="font-weight: bold;">LoggedIn User:</strong> {{Auth::user()->first_name}} {{Auth::user()->last_name}}
                     </span>
                 </div>
-
-					@yield('content')
-
+				<div class="row">
+					<div class="col-12">
+						<div class="card">
+									<div class="card-body">
+								@yield('content')
+							</div>
+						</div>
+					</div>
+				</div>
+	
 				</div>
 
 			</main>
@@ -91,6 +133,24 @@
 			</footer>
 		</div>
 	</div>
-</body>
 
+	<script>
+		 	document.addEventListener("DOMContentLoaded", function() {
+			// Datatables with Buttons
+			var datatablesButtons = $(".data-table").DataTable({
+				responsive: true,
+				buttons: [
+					{
+						text: 'My button',
+						action: function (e, dt, node, config) {
+							alert('Button activated');
+						}
+					}
+				]
+			});
+		});
+	</script>
+
+	@yield('scripts')
+</body>
 </html>

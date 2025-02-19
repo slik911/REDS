@@ -8,7 +8,10 @@ export default defineConfig({
                 'resources/sass/app.scss',
                 'resources/js/app.js',
                 'resources/js/app-admin.js',
-                'resources/css/app-admin.css'
+                'resources/css/app-admin.css',
+                // 'resources/css/datatables.min.css',
+                // 'resources/js/datatables.min.js'
+                'resources/js/datatable.js'
             ],
             refresh: true,
         }),
