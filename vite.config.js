@@ -11,7 +11,7 @@ export default defineConfig({
                 'resources/css/app-admin.css',
                 'resources/css/datatables.min.css',
                 'resources/js/datatables.min.js',
-                'resources/js/datatable.js'
+                'resources/js/datatables.js'
             ],
             refresh: true,
         }),
