@@ -20,7 +20,7 @@ class ClientValidation
             "create" => [
                 "first_name" => "string|required|max:50",
                 "last_name" => "string|required|max:50",
-                "phone_number" => "string|required|max:15",
+                "phone_number" => "string|required|max:15|min:10",
                 "email" => "string|required|email|max:50|unique:users,email",
                 "address" => "string|required",
                 "province" => "string|required",
@@ -31,7 +31,7 @@ class ClientValidation
             "update" => [
                 "first_name" => "string|required|max:50",
                 "last_name" => "string|required|max:50",
-                "phone_number" => "string|required|max:15",
+                "phone_number" => "string|required|max:15|min:10",
                 "email" => "string|required|email|max:50|unique:users,email," . $request->id,
                 "address" => "string|required",
                 "province" => "string|required",

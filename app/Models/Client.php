@@ -39,7 +39,6 @@ class Client extends Model
          * @var list<string>
          */
         protected $hidden = [
-            // 'password',
             'remember_token',
         ];
     
@@ -52,9 +51,11 @@ class Client extends Model
         {
             return [
                 'email_verified_at' => 'datetime',
-                // 'password' => 'hashed',
             ];
         }
     
+        public function rfq(){
+            return $this->hasMany(RFQ::class, 'client_id', 'uuid');
+        }
     
 }

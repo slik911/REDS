@@ -21,10 +21,9 @@ return new class extends Migration
             $table->string('province');
             $table->string('city');
             $table->string('postal_code');
-            $table->boolean('status');
+            $table->boolean('status')->default(false);;
             $table->boolean('is_quotation_sent')->default(false);
             $table->softDeletes();
-            $table->foreign('client_id')->references('uuid')->on('clients');
             $table->timestamps();
         });
     }

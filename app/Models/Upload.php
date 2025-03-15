@@ -31,4 +31,9 @@ class Upload extends Model
         }
         return Upload::create(['url' => $url]);
     }
+
+    public function posts()
+    {
+        return $this->belongsToMany(Post::class, 'post_uploads', 'upload_id', 'post_id');
+    }
 }

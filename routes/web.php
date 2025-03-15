@@ -11,6 +11,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('admin.profile');
+
 Route::get('role', [App\Http\Controllers\RoleController::class, 'index'])->name('admin.role');
 Route::get('role/create', [App\Http\Controllers\RoleController::class, 'create'])->name('admin.role.create');
 Route::post('role/create', [App\Http\Controllers\RoleController::class, 'store'])->name('admin.role.store');
@@ -45,3 +47,39 @@ Route::post('category/create', [App\Http\Controllers\CategoryController::class, 
 Route::get('category/edit/{uuid}', [App\Http\Controllers\CategoryController::class, 'edit'])->name('admin.category.edit');
 Route::put('category/edit', [App\Http\Controllers\CategoryController::class, 'update'])->name('admin.category.update');
 Route::delete('category/delete', [App\Http\Controllers\CategoryController::class, 'delete'])->name('admin.category.delete');
+
+Route::get('rfq', [App\Http\Controllers\RFQController::class, 'index'])->name('admin.rfq');
+Route::get('rfq/create', [App\Http\Controllers\RFQController::class, 'store'])->name('admin.rfq.store');
+Route::get('rfq/view/{uuid}', [App\Http\Controllers\RFQController::class, 'view'])->name('admin.rfq.view');
+Route::get('rfq/preview/{uuid}', [App\Http\Controllers\RFQController::class, 'preview'])->name('admin.rfq.preview');
+
+Route::get('renovation', [App\Http\Controllers\PostController::class, 'index'])->name('admin.renovation');
+Route::get('renovation/create', [App\Http\Controllers\PostController::class, 'create'])->name('admin.renovation.create');
+Route::post('renovation/create', [App\Http\Controllers\PostController::class, 'store'])->name('admin.renovation.store');
+Route::get('renovation/status/update/{post_id}', [App\Http\Controllers\PostController::class, 'updateStatus'])->name('admin.renovation.status.update');
+Route::get('renovation/edit/{post_id}', [App\Http\Controllers\PostController::class, 'edit'])->name('admin.renovation.edit');
+Route::post('/delete/image', [App\Http\Controllers\PostController::class, 'deleteImage'])->name('admin.renovation.delete.image');
+Route::put('renovation/edit', [App\Http\Controllers\PostController::class, 'update'])->name('admin.renovation.update');
+Route::delete('renovation/delete', [App\Http\Controllers\PostController::class, 'delete'])->name('admin.renovation.delete');
+
+Route::get('rentals', [App\Http\Controllers\RentalController::class, 'index'])->name('admin.rentals');
+Route::get('rentals/create', [App\Http\Controllers\RentalController::class, 'create'])->name('admin.rentals.create');
+Route::post('rentals/create', [App\Http\Controllers\RentalController::class, 'store'])->name('admin.rentals.store');
+Route::get('rentals/status/update/{post_id}', [App\Http\Controllers\RentalController::class, 'updateStatus'])->name('admin.rentals.status.update');
+Route::get('rentals/edit/{post_id}', [App\Http\Controllers\RentalController::class, 'edit'])->name('admin.rentals.edit');
+Route::put('rentals/edit', [App\Http\Controllers\RentalController::class, 'update'])->name('admin.rentals.update');
+Route::delete('rentals/delete', [App\Http\Controllers\RentalController::class, 'delete'])->name('admin.rentals.delete');
+
+
+
+
+Route::get('quotations', [App\Http\Controllers\QuotationController::class, 'index'])->name('admin.quotation');
+Route::get('quotations/create', [App\Http\Controllers\QuotationController::class, 'create'])->name('admin.quotation.create');
+Route::post('quotations/create', [App\Http\Controllers\QuotationController::class, 'store'])->name('admin.quotation.store');
+Route::get('/client/info', [App\Http\Controllers\QuotationController::class, 'getClientInfo'])->name('admin.quotation.client.info.get');
+Route::post('quotations/create', [App\Http\Controllers\QuotationController::class, 'store'])->name('admin.quotation.store');
+Route::get('quotations/change/status/{status}/{quote_id}', [App\Http\Controllers\QuotationController::class, 'changeStatus'])->name('admin.quotation.change.status'); 
+Route::get('quotations/send/mail/{quote_id}',  [App\Http\Controllers\QuotationController::class, 'sendMail'])->name('admin.quotation.send');
+Route::get('quotations/preview/{quote_id}',  [App\Http\Controllers\QuotationController::class, 'preview'])->name('admin.quotation.preview');
+
+Route::get('/mail', [App\Http\Controllers\QuotationController::class, 'quote'])->name('admin.quotation.view');

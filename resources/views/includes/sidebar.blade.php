@@ -10,9 +10,31 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="index.html">
+                <a class="sidebar-link" href="{{route('home')}}">
                 <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
                 </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{route('admin.rfq')}}">
+                <i class="align-middle" data-feather="file"></i> <span class="align-middle">RFQ</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{route('admin.quotation')}}">
+                <i class="align-middle" data-feather="file-text"></i> <span class="align-middle">Quotation</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a data-bs-target="#post" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                    <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Post</span>
+                </a>
+                <ul id="post" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{route('admin.renovation')}}'>Renovations</a></li>
+                    <li class="sidebar-item"><a class='sidebar-link' href='{{route('admin.rentals')}}'>Rentals</a></li>
+                </ul>
             </li>
 
             <li class="sidebar-item">
@@ -45,23 +67,8 @@
             </li>
 
 
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="pages-sign-in.html">
-                <i class="align-middle" data-feather="file"></i> <span class="align-middle">RFQ</span>
-                </a>
-            </li>
+            
 
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="pages-sign-up.html">
-                <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign Up</span>
-                </a>
-            </li>
-
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="pages-blank.html">
-                <i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
-                </a>
-            </li>
         </ul>
     </div>
 </nav>

@@ -35,14 +35,14 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{route('admin.service.edit', ['uuid'=>$service->uuid])}}" class="btn btn-primary"> <i class="align-middle" data-feather="edit"></i> Edit</a>
+                            <a href="{{route('admin.service.edit', ['uuid'=>$service->uuid])}}" class="btn btn-primary btn-sm"> <i class="align-middle" data-feather="edit"></i> Edit</a>
                             <a href="#" 
                                 onclick="event.preventDefault(); 
                                         if (confirm('Are you sure you want to delete this?')) { 
                                             //dynamically parsing the current row id to the form
                                             document.getElementById('uuid').value = '{{$service->uuid}}';
                                             document.getElementById('delete-service-form').submit();}" 
-                                class="btn btn-danger">
+                                class="btn btn-danger btn-sm">
                                  <i class="align-middle" data-feather="trash-2"></i> Delete
                              </a>
                              <form id="delete-service-form" action="{{ route('admin.service.delete') }}" method="POST" style="display: none;">

@@ -3,14 +3,14 @@
 					<i class="hamburger align-self-center"></i>
 				</a>
 
-				<form class="d-none d-sm-inline-block">
+				{{-- <form class="d-none d-sm-inline-block">
 					<div class="input-group input-group-navbar">
 						<input type="text" class="form-control" placeholder="Search…" aria-label="Search">
 						<button class="btn" type="button">
 							<i class="align-middle" data-feather="search"></i>
 						</button>
 					</div>
-				</form>
+				</form> --}}
 
 
 				<div class="navbar-collapse collapse">
@@ -155,7 +155,7 @@
 
                 
 							<div class="dropdown-menu dropdown-menu-end">
-								<a class='dropdown-item' href='/pages-profile'><i class="align-middle me-1" data-feather="user"></i> Profile</a>
+								<a class='dropdown-item' href='{{route('admin.profile')}}'><i class="align-middle me-1" data-feather="user"></i> Profile</a>
 
 								<div class="dropdown-divider"></div>
 								<a class='dropdown-item' href='/pages-settings'><i class="align-middle me-1" data-feather="settings"></i> Settings &
