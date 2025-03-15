@@ -9,8 +9,8 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/js/app-admin.js',
                 'resources/css/app-admin.css',
-                // 'resources/css/datatables.min.css',
-                // 'resources/js/datatables.min.js'
+                'resources/css/datatables.min.css',
+                'resources/js/datatables.min.js',
                 'resources/js/datatable.js'
             ],
             refresh: true,
