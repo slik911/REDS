@@ -1,0 +1,436 @@
+
+body {
+    font-family: 'inter', sans-serif;
+    font-size: 16px;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+.nav-link {
+    font-size: 15px;
+    color: gray;
+}
+
+.nav-link:hover {
+    color: black;
+    text-decoration: underline;
+    text-underline-offset: 0.5em;
+}
+
+.nav-item .btn{
+    background-color: #d9d9d9; 
+    color: black; 
+    font-size: small;
+    padding: 10px 20px;
+    border-radius: 0%;
+}
+
+.dropdown-menu {
+    color:  #0A2540;
+}
+
+/* Carousel */
+.c-item {
+    height: 500px;
+}
+
+.c-img {
+    height: 100%;
+    object-fit: cover;
+    filter:brightness(0.4); 
+}
+
+.c-caption {
+    text-align: left;
+    margin-bottom: 5%;
+}
+
+.c-caption h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.c-caption .btn {
+    background-color: #b5b5b5; 
+    color: black; 
+    font-size: small;
+    padding: 10px 20px;
+    border-radius: 0%;
+}
+
+#home-carousel {
+    margin-bottom: 3%;
+}
+
+
+/* Who we are section*/
+.home-who-we-are .btn {
+    background-color: #0A2540; 
+    color: white; 
+    font-size: small;
+    padding: 10px 20px;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    border-radius: 0%;
+}
+
+.home-who-we-are h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 2%;
+}
+
+/* Recent Projects Section*/
+.recent-projects {
+    background-color: #F1EEEE;
+}
+
+.recent-projects .btn {
+    background-color: #0A2540; 
+    color: white; 
+    font-size: small;
+    padding: 10px 20px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-radius: 0%;
+}
+
+/* Services Section */
+#home-services {
+    align-items: center;
+    border: 0.1rem;
+    border-radius: 1rem;
+    margin: 1%;
+}
+
+#home-services img {
+    border-radius: 1rem;
+    width: 55%;
+    margin: 10%;
+}
+
+
+#home-services button {
+    background-color: #0A2540; 
+    color: white; 
+    font-size: small;
+    padding: 10px 20px;
+}
+
+/* Rentals Section */
+#home-rentals {
+    align-items: center;
+    border: 0.1rem;
+    border-radius: 1rem;
+    margin: 1%;
+}
+
+/* Testimonials Section */
+
+#testimony {
+    align-items: center;
+    border: 0.1rem;
+    border-radius: 1rem;
+    margin: 1%;
+}
+
+#testimony img {
+    border-radius: 15rem;
+    width: 65%;
+    margin: 10%;
+}
+
+
+/* Footer */
+
+.footer-section h1,
+.footer-section h2,
+.footer-section h3,
+.footer-section h4,
+.footer-section h5,
+.footer-section h6 {
+     font-family: 'inter', sans-serif;
+}
+
+.footer-section section {
+    padding: 60px 0;
+    min-height: 100vh;
+}
+
+.footer-section a,
+.footer-section a:hover,
+.footer-section a:focus,
+.footer-section a:active {
+    text-decoration: none;
+    outline: none;
+}
+
+.footer-section a,
+.footer-section a:active,
+.footer-section a:focus {
+    color: black;
+    text-decoration: none;
+    transition-timing-function: ease-in-out;
+    -ms-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
+    -webkit-transition-timing-function: ease-in-out;
+    -o-transition-timing-function: ease-in-out;
+    transition-duration: .2s;
+    -ms-transition-duration: .2s;
+    -moz-transition-duration: .2s;
+    -webkit-transition-duration: .2s;
+    -o-transition-duration: .2s;
+}
+
+.footer-section ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-section img {
+    max-width: 50%;
+    height: auto;
+}
+
+.footer-section {
+    background-color: #D9D9D9;
+    position: relative;
+    overflow: hidden;
+    z-index: 9;
+}
+
+.footer-section:before {
+    content: '';
+    position: absolute;
+    top: -146%;
+    left: -18%;
+    width: 44%;
+    height: 257%;
+    transform: rotate(54deg);
+    background-color: #D9D9D9;
+    -webkit-transform: rotate(54deg);
+    -moz-transform: rotate(54deg);
+    -ms-transform: rotate(54deg);
+    -o-transform: rotate(54deg);
+    z-index: -10;
+}
+
+.footer-section:after {
+    position: absolute;
+    content: '';
+    background-color: #D9D9D9;
+    top: -24%;
+    right: 4%;
+    width: 26%;
+    height: 264%;
+    transform: rotate(44deg);
+    -webkit-transform: rotate(44deg);
+    -moz-transform: rotate(44deg);
+    -ms-transform: rotate(44deg);
+    -o-transform: rotate(44deg);
+    z-index: -10;
+}
+
+.footer-top {
+    padding-top: 96px;
+    padding-bottom: 50px;
+}
+
+.footer-top p,
+.company-footer-contact-list li {
+    color: #4E4E4E;
+}
+
+.company-footer-contact-list {
+    margin-top: 10px;
+}
+
+.company-intro-widget {
+    align-self: center;
+}
+
+.company-footer-contact-list li {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+}
+.company-footer-contact-list li+li {
+    margin-top: 5px;
+}
+
+.company-footer-contact-list li i {
+    margin-right: 10px;
+    font-size: 20px;
+    display: inline-block;
+}
+
+.footer-top .site-logo {
+    margin-bottom: 25px;
+    display: block;
+    max-width: 170px;
+}
+
+.widget-title {
+    text-transform: capitalize;
+}
+
+.footer-top .widget-title {
+    color: #4E4E4E;
+    margin-bottom: 40px;
+}
+
+.courses-link-list li+li {
+    margin-top: 10px;
+}
+
+.courses-link-list li a {
+    color: #4E4E4E;
+    text-transform: capitalize;
+    font-family: var(--para-font);
+    font-weight: 400;
+}
+
+.courses-link-list li a:hover {
+    color: blueviolet;
+}
+
+.courses-link-list li i {
+    margin-right: 5px;
+}
+
+.footer-top .small-post-title a {
+    font-family: var(--para-font);
+    color: #4E4E4E;
+    font-weight: 400;
+}
+
+.post-date {
+    font-weight: bold;
+}
+
+.small-post-list li+li {
+    margin-top: 20px;
+}
+
+.news-letter-form {
+    margin-top: 15px;
+}
+
+.footer-slogan {
+    padding: 13px 0;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.footer-bottom {
+    padding: 13px 0;
+    background-color: whitesmoke;
+    border-top: none;
+}
+
+.copy-right-text {
+    color: #4E4E4E;
+}
+
+.copy-right-text a {
+    color: blueviolet;
+}
+
+/********<<<<<<<<<<<<<<<<<<< About.html Page>>>>>>>>>>>>>>***************/
+
+.about-section h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 2%;
+}
+
+.cbanner-caption {
+    text-align: center;
+    margin-bottom: 10%;
+}
+
+.cbanner-caption h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 2%;
+}
+
+.cbanner-caption a {
+    color: white; 
+    font-size: small;
+}
+
+.breadcrumb-nav {
+    --bs-breadcrumb-divider: '>>';
+    --bs-breadcrumb-divider-color: white;
+    font-weight: bold;
+    justify-self: center;
+}
+
+/*********<<<<<<<<<<<<< rfq.html Page and Contact.html Page>>>>>>>>>>>>***/
+
+.required::after {
+    content: " *";
+    color: red;
+}
+
+.btn-custom {
+    background-color: #0A2540;
+    color: white;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.btn-custom:hover {
+    background-color: #081b31;
+}
+
+
+/********<<<<<<<<<<<<<<<<<<< service.html Page>>>>>>>>>>>>>>**************/
+
+
+/********<<<<<<<<<<<<<<<<<<< Rental.html Page>>>>>>>>>>>>>>***************/
+
+.rentals{
+    margin-bottom: 5%;
+}
+
+/*
+.post-img img:hover {
+    filter: brightness(0.4);
+}
+
+.post-img button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #d9d9d9; 
+    color: black; 
+    font-size: small;
+    padding: 10px 20px;
+    border-radius: 0%;
+    text-align: center;
+}
+ 
+.post-img button:hover {
+    background-color: #0A2540;
+    color: white;
+}
+*/
+
+/********<<<<<<<<<<<<<<<<<<< Renovation.html Page>>>>>>>>>>>>>************/
+
+
+
+
+/********<<<<<<<<<<<<<<<<<<< Projects.html Page>>>>>>>>>>>>>>*************/
+
+.projects{
+    margin-bottom: 5%;
+}
+
+
+  

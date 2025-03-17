@@ -55,6 +55,10 @@
             </div>
         </div>
         <div class="col-md-6">
+            <div class="mb-3 col-md-12">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control " id="title" value="{{$rfq->title}}" readonly name="title" >
+            </div> 
             <label for="">Description</label>
             <textarea name="" id="" class="form-control" cols="30" readonly rows="10" value="{{$rfq->description}}">{{$rfq->description}}</textarea>
         </div>

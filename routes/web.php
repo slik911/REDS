@@ -1,11 +1,19 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+
+
+Route::get('/', [App\Http\Controllers\WebController::class, 'index']);
+Route::get('/about', [App\Http\Controllers\WebController::class, 'about'])->name('about');
+Route::get('/rental', [App\Http\Controllers\WebController::class, 'rental'])->name('rental');
+Route::get('/renovations', [App\Http\Controllers\WebController::class, 'reno'])->name('reno');
+Route::get('/project', [App\Http\Controllers\WebController::class, 'project'])->name('project');
+Route::get('/contact', [App\Http\Controllers\WebController::class, 'contact'])->name('contact');
+Route::get('/quote', [App\Http\Controllers\WebController::class, 'quote'])->name('quote');
 
 Auth::routes();
 
@@ -49,7 +57,7 @@ Route::put('category/edit', [App\Http\Controllers\CategoryController::class, 'up
 Route::delete('category/delete', [App\Http\Controllers\CategoryController::class, 'delete'])->name('admin.category.delete');
 
 Route::get('rfq', [App\Http\Controllers\RFQController::class, 'index'])->name('admin.rfq');
-Route::get('rfq/create', [App\Http\Controllers\RFQController::class, 'store'])->name('admin.rfq.store');
+Route::post('rfq/create', [App\Http\Controllers\RFQController::class, 'store'])->name('admin.rfq.store');
 Route::get('rfq/view/{uuid}', [App\Http\Controllers\RFQController::class, 'view'])->name('admin.rfq.view');
 Route::get('rfq/preview/{uuid}', [App\Http\Controllers\RFQController::class, 'preview'])->name('admin.rfq.preview');
 

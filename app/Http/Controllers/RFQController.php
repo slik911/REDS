@@ -6,6 +6,7 @@ use App\Helpers\Functions;
 use App\Http\Controllers\Controller;
 use App\Models\Client;
 use App\Models\RFQ;
+use App\Validations\RFQValidation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -18,8 +19,15 @@ class RFQController extends Controller
         return view('admin.rfq.index', compact('rfqs'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, RFQValidation $rule)
     {
+        $validated = $rule->validationRules($request, 'create');
+
+        if ($validated->fails()) {
+            notyf()->error($validated->errors()->first());
+            return redirect()->back()->withInput($request->all());
+        }
+
         try {
 
             DB::beginTransaction();
@@ -44,14 +52,14 @@ class RFQController extends Controller
             $rfq->save();
             DB::commit();
 
-            notyf()->success("RFQ created successfully");
+            notyf()->success("Submission successful. We'll get back to you as soon as possible.");
+            return redirect()->back();
 
         } catch (\Throwable $th) {
             DB::rollBack();
             Log::error("message: " . $th->getMessage());
-            notyf()->error("An error occurred while creating RFQ");
-            return redirect()->back(
-            );
+            notyf()->error("An error occurred while submitting request");
+            return redirect()->back();
         }
         
     }
