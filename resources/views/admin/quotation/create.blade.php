@@ -227,6 +227,6 @@ $(document).ready(function () {
 
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">Create Rentals Post</button>
+    <button type="submit" class="btn btn-primary">Create Quotation</button>
    </form>
 @endsection

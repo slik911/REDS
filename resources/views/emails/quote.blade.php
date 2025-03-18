@@ -1,3 +1,13 @@
-<p>Hello,</p>
-<p>Please find attached the quote from First Vision Contracting.</p>
-<p>Thank you!</p>
+<x-mail::message>
+<p>Hi {{$mailData['name']}} </p>
+
+{{$mailData['body']}}
+
+
+<x-mail::button :url="url('/')">
+    Visit our website
+</x-mail::button>
+
+Thanks,<br>
+{{ config('app.name') }}
+</x-mail::message>

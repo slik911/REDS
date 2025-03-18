@@ -15,6 +15,7 @@
     <title>@yield('title') | First Vision </title>
     <link rel="stylesheet" href="{{asset('css/app-admin.css')}}">
 	<link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
+    <link rel="icon" href="./assets/FVClogo.png">
 	<script src="{{asset('js/app-admin.js')}}"></script>
 	<script src="{{asset('js/datatables.js')}}"></script>
     {{-- @vite(['resources/css/app-admin.css', 'resources/js/app-admin.js']) --}}

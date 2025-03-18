@@ -9,12 +9,12 @@
             font-family: Arial, sans-serif;
         }
         .container {
-            width: 80%;
+            width: 90%;
             margin: auto;
-            padding: 20px;
+            padding: 10px;
         }
         .header, .title, .services {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
         .header h2 {
             text-align: center;
@@ -26,12 +26,12 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
+            margin-top: 5px;
             font-size: 13px;
         }
         th, td {
             border: 1px solid black;
-            padding: 8px;
+            padding: 5px;
             text-align: left;
         }
         p {
@@ -39,7 +39,7 @@
             font-size: 13px;
         }
         .terms {
-            line-height: 24px;
+            line-height: 20px;
             font-size: 13px;
         }
         .title-table {
@@ -121,13 +121,13 @@
                                 <p class="trix-content">{!!$service->description!!}</p>
                             </td>
                             <td>
-                                {{$service->unit_price}}
+                                {{number_format($service->unit_price)}}
                             </td>
                             <td>
                                 {{$service->quantity}}
                             </td>
                             <td>
-                                {{$service->total}}
+                                {{number_format($service->total)}}
                             </td>
                         </tr>
                     @endforeach
@@ -138,7 +138,7 @@
                                 Sub Total:
                             </th>
                             <td>
-                                {{$quotation->sub_total}}
+                                {{number_format($quotation->sub_total)}}
                             </td>
                         </tr>
                         <tr>
@@ -158,7 +158,7 @@
                                 Total
                             </th>
                             <td>
-                                {{$quotation->total}}
+                                {{number_format($quotation->total)}}
                             </td>
                         </tr>
                 </tbody>

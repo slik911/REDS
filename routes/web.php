@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 // Route::get('/', function () {
 
 
-Route::get('/', [App\Http\Controllers\WebController::class, 'index']);
+Route::get('/', [App\Http\Controllers\WebController::class, 'index'])->name('welcome');
 Route::get('/about', [App\Http\Controllers\WebController::class, 'about'])->name('about');
 Route::get('/rental', [App\Http\Controllers\WebController::class, 'rental'])->name('rental');
 Route::get('/renovations', [App\Http\Controllers\WebController::class, 'reno'])->name('reno');

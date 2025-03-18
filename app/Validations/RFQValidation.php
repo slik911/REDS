@@ -20,7 +20,7 @@ class RFQValidation
             "create" => [
                 "first_name" => "string|required|max:50",
                 "last_name" => "string|required|max:50",
-                "email" => "email|required|unique:clients,email",
+                "email" => "email|required",
                 "phone_number" => "string|required|max:15|min:10",
                 "address" => "string|required",
                 "title" => "string|required",

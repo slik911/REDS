@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,  shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="icon" href="./assets/FVClogo.png">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <script src="{{asset('js/script.js')}}"></script>
@@ -52,7 +53,7 @@
 
     @yield('content')
     
-    <!--Footer-->
+    {{-- <!--Footer-->
     <footer class="footer-section">
         <div class="footer-top">
         <div class="container">
@@ -143,8 +144,65 @@
             </div>
         </div>
         </div><!-- footer-bottom end -->
-    </footer>
+    </footer> --}}
 
+    <footer class="section bg-footer">
+        <div class="container pr-4">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="">
+                 <img src="{{asset('image/FVClogo.png')}}" alt="" style="width:100px; height:100px">
+                 <p class="mt-2">From first vision to final detail, we guide each project with precision, ensuring every step aligns with the client's goals for exceptional results.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-2">
+                    <div class="">
+                        <h6 class="footer-heading text-uppercase text-white">Resources</h6>
+                        <ul class="list-unstyled footer-link mt-4">
+                            <li><a href="">Privacy Policy</a></li>
+                            <li><a href="">FAQ </a></li>
+                            <li><a href="">Terms & Conditions</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-2">
+                    <div class="">
+                        <h6 class="footer-heading text-uppercase text-white">Quick Links</h6>
+                        <ul class="list-unstyled footer-link mt-4">
+                            <li><a href="">About Us</a></li>
+                            <li><a href="">Projects</a></li>
+                            <li><a href="">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="">
+                        <h6 class="footer-heading text-uppercase text-white">Contact Us</h6>
+                        <p class="contact-info mt-4">Address: 314 2ND STREET
+                            SHAUGHNESSY, AB T0K 2A0</p>
+                        <p>Email :
+                            firstvisionscontracting@gmail.com</p>
+                        <p class="contact-info">Phone: +1 (403) 929-0333</p>
+                        <div class="mt-5">
+                            <ul class="list-inline">
+                                <li class="list-inline-item"><a href="#"><i class="fab facebook footer-social-icon fa-facebook-f"></i></i></a></li>
+                                <li class="list-inline-item"><a href="https://www.instagram.com/first_vision_contracting"><i class="fab instagram footer-social-icon fa-instagram"></i></i></a></li>
+                                <li class="list-inline-item"><a href="https://www.instagram.com/first_vision_contracting"><i class="fab google footer-social-icon fa-yelp"></i></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <p class="footer-alt mb-0 f-14">2025 © First Vision Contracting, All Rights Reserved</p>
+        </div>
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

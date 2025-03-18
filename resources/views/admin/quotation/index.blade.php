@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <div class="d-flex justify-content-end align-items-center" style="display: flex; justify-content: right; align-items: center;">
-    <a href="{{route('admin.quotation.create')}}" class="btn btn-primary"> <i class="align-middle" data-feather="plus-circle"></i> Create Quoatation</a>
+    <a href="{{route('admin.quotation.create')}}" class="btn btn-primary"> <i class="align-middle" data-feather="plus-circle"></i> Create Quotation</a>
 </div>
 <div class="row">
     <div class="col-12 mt-4">

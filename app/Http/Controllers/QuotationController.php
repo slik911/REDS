@@ -112,14 +112,13 @@ class QuotationController extends Controller
         try {
             $quotation = Quotation::with('rfq', 'client', 'user')->where('uuid', $quote_id)->first();
 
-            // Generate PDF in memory
-            // $pdf = Pdf::loadView('pdf.quote', ['quotation' => $quotation->toArray()]);
             $pdf = Pdf::loadView('pdf.quote', ['quotation' => $quotation]);
             $pdfContent = $pdf->output(); // Get PDF as string
 
             $mailData = [
-                'title' => 'Quote From First Vision Contracting',
-                'body' => 'This is for testing email using smtp.',
+                'title' => 'Quotation for Your Project – First Vision Contracting',
+                'name' => $quotation->client->first_name,
+                'body' => 'I hope you\'re doing well. Please find attached the quotation for your project. Let us know if you have any questions or require any adjustments. We look forward to working with you.',
                 'attachments' => [
                     [
                         'content' => $pdfContent,
@@ -129,11 +128,20 @@ class QuotationController extends Controller
                 ]
             ];
             
-            $email = 'your_email@gmail.com';
+            $email = $quotation->client->email;
+            
+          
             Mail::to($email)->send(new QuoteMail($mailData));
+            
 
             $quotation->status = "sent";
             $quotation->save();
+
+            if($quotation->rfq){
+                RFQ::where('uuid', $quotation->rfq->uuid)->update([
+                    'is_quotation_sent'=>true
+                ]);
+            }
         
             
             notyf()->success('Email is sent Successfully');

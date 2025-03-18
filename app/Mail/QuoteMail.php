@@ -31,6 +31,7 @@ class QuoteMail extends Mailable
         return new Envelope(
             subject: $this->mailData['title'],
         );
+
     }
 
     /**
@@ -38,8 +39,9 @@ class QuoteMail extends Mailable
      */
     public function content(): Content
     {
+       ;
         return new Content(
-            view: 'emails.quote',
+            markdown:'emails.quote',
             with: $this->mailData
         );
     }

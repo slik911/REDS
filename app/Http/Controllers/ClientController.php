@@ -53,7 +53,7 @@ class ClientController extends Controller
             DB::beginTransaction();
             
             //store the user details in the database
-            $user = Client::create($request->all());
+            $client = Client::create($request->all());
 
             DB::commit();
 

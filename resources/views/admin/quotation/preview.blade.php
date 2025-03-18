@@ -103,13 +103,13 @@
                                         <p class="trix-content">{!!$service->description!!}</p>
                                     </td>
                                     <td>
-                                        {{$service->unit_price}}
+                                        {{number_format($service->unit_price)}}
                                     </td>
                                     <td>
                                         {{$service->quantity}}
                                     </td>
                                     <td>
-                                        {{$service->total}}
+                                        {{number_format($service->total)}}
                                     </td>
                                 </tr>
                             @endforeach
@@ -120,7 +120,7 @@
                                         Sub Total:
                                     </th>
                                     <td>
-                                        {{$quotation->sub_total}}
+                                        {{number_format($quotation->sub_total)}}
                                     </td>
                                 </tr>
                                 <tr>
@@ -140,7 +140,7 @@
                                         Total
                                     </th>
                                     <td>
-                                        {{$quotation->total}}
+                                        {{number_format($quotation->total)}}
                                     </td>
                                 </tr>
                         </tbody>

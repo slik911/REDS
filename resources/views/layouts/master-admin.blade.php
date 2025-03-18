@@ -3,12 +3,9 @@
 <html lang="en">
 
 <head>
+	<link rel="icon" href="./assets/FVClogo.png">
 	{{-- @vite(['resources/css/app-admin.css', 'resources/js/app-admin.js', 'resources/js/datatables.js']) --}}
 	<link rel="stylesheet" href="{{asset('css/app-admin.css')}}">
-
-
-
-
 	<title>@yield('title')</title>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">

@@ -3,12 +3,12 @@
     
 
     <!--Carousel-->
-    <div id="home-carousel" class="carousel slide" data-bs-ride="carousel">
+    <div id="" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active c-item">
             <img src="{{asset('assets/Frame 3.png')}}" class="d-block w-100 c-img img-fluid" alt="carousel1">
             <div class="carousel-caption c-caption">
-                <h1>From First Vision To<br>Final Detail</h1>
+                <h1 class="display-2">From First Vision To<br>Final Detail</h1>
                 <p>
                     Bringing innovative designs and expert craftsmanship to every renovation. Whether it's a <br>
                     modern upgrade or a timeless transformation, we turn your vision<br> into reality—one space at a time.
@@ -45,13 +45,13 @@
 
 
     <!--Who we are?-->
-    <section class="home-who-we-are p-4 m-4">
+    <section class="home-who-we-are p-md-5 p-2">
         <div class="container">
             <div class="card mb-3" style="width: 100%; border: none;">
                 <div class="row g-0">
                 <div class="col-md-6">
                     <div class="card-body">
-                    <p><h1>WHO WE ARE</h1></p>
+                    <p><h1 class="display-4 mt-md-5">WHO WE ARE</h1></p>
                     <p class="card-text">
                         We transform homes and rental properties into extraordinary spaces through expert renovations. 
                         Guided by “From First Vision to Final Detail,” we specialize in painting, drywalling, basement development, 
@@ -61,7 +61,7 @@
                         Whether refreshing a home or upgrading rentals, we bring dreams to life. Let’s build 
                         something incredible together—every detail matters to us.
                     </p>
-                    <a href="{{route('about')}}" class="btn" role="button">Learn more</a>
+                    <a href="{{route('about')}}" class="btn btn-primary" role="button">Learn more</a>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -84,30 +84,29 @@
                 to <i>“From First Vision to Final Detail”</i>—where your dream home begins.<br>
                 <a href="#" class="btn" role="button">See all projects</a>
             </p>
-            <div class="row row-cols-1 row-cols-md-2 g-4 mb-4">
-                <div class="col">
+            <div class="row">
+                <div class="col-md-3">
                   <div class="card">
                     <img src="{{asset('assets/Frame 4.png')}}" class="card-img-top" alt="Frame">
                   </div>
                 </div>
-                <div class="col">
+                <div class="col-md-3">
                   <div class="card">
                     <img src="{{asset('assets/Frame 6.png')}}" class="card-img-top" alt="Frame">
                   </div>
                 </div>
-            </div>
-            <div class="row row-cols-1 row-cols-md-2 g-4 mb-4">
-                <div class="col">
-                  <div class="card">
-                    <img src="{{asset('assets/Frame 5.png')}}" class="card-img-top" alt="Frame">
+                <div class="col-md-3">
+                    <div class="card">
+                      <img src="{{asset('assets/Frame 5.png')}}" class="card-img-top" alt="Frame">
+                    </div>
                   </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <img src="{{asset('assets/Frame 7.png')}}" class="card-img-top" alt="Frame">
+                  <div class="col-md-3">
+                    <div class="card">
+                      <img src="{{asset('assets/Frame 7.png')}}" class="card-img-top" alt="Frame">
+                    </div>
                   </div>
-                </div>
             </div>
+
         </div>    
     </section>
 
