@@ -34,62 +34,70 @@
     <div class="row">
         <div class="col-md-3">
             <div class="card bg-info text-white">
-                <div class="card-body dash-cards">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="text-start" style="width:50%;">
-                            <p>Clients</p>
-                            <h1>50</h1>
+                <a href="{{route('admin.client')}}" style="color:#fff !important; text-decoration:none">
+                    <div class="card-body dash-cards">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="text-start" style="width:50%;">
+                                <p>Clients</p>
+                                <h1>{{$clients}}</h1>
+                            </div>
+                            <div class="text-end" style="width:50%;">
+                                <i class="align-middle mt-n6" data-feather="user"></i>
+                            </div>
                         </div>
-                        <div class="text-end" style="width:50%;">
-                            <i class="align-middle mt-n6" data-feather="user"></i>
-                        </div>
-                    </div>
-                </div>        
+                    </div> 
+                </a>       
             </div>
         </div>
         <div class="col-md-3">
             <div class="card bg-danger text-white">
+                <a href="{{route('admin.rfq')}}" style="color:#fff !important; text-decoration:none">
                 <div class="card-body dash-cards">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="text-start" style="width:50%;">
                             <p>RFQ</p>
-                            <h1>120</h1>
+                            <h1>{{$rfq}}</h1>
                         </div>
                         <div class="text-end" style="width:50%;">
                             <i class="align-middle mt-n6" data-feather="file-text"></i>
                         </div>
                     </div>
                 </div>
+                </a>
             </div>
         </div>
         <div class="col-md-3">
             <div class="card bg-success text-white">
+                <a href="{{route('admin.quotation')}}" style="color:#fff !important; text-decoration:none">
                 <div class="card-body dash-cards">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="text-start" style="width:50%;">
                             <p>Quotation</p>
-                            <h1>150</h1>
+                            <h1>{{$quotation}}</h1>
                         </div>
                         <div class="text-end" style="width:50%;">
                             <i class="align-middle mt-n6" data-feather="dollar-sign"></i>
                         </div>
                     </div>
                 </div>
+                </a>
             </div>
         </div>
         <div class="col-md-3">
             <div class="card bg-primary text-white">
+                <a href="{{route('admin.renovation')}}" style="color:#fff !important; text-decoration:none">
                 <div class="card-body dash-cards">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="text-start" style="width:50%;">
                             <p>Posts</p>
-                            <h1>75</h1>
+                            <h1>{{$post}}</h1>
                         </div>
                         <div class="text-end" style="width:50%;">
                             <i class="align-middle mt-n6" data-feather="edit"></i>
                         </div>
                     </div>
                 </div>
+                </a>
             </div>
         </div>
     </div>
@@ -105,38 +113,26 @@
                             <th scope="col">#</th>
                             <th>Date</th>
                             <th scope="col">Name</th>
+                            <th>Status</th>
                             <th></th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mar 21 2024</td>
-                            <td>Noel Cole </td>
-                            <td><span class="badge bg-success">Sent</span></td>
-              
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Mar 18 2024</td>
-                            <td>Tim Frantz </td>
-                            <td><span class="badge bg-success">Sent</span></td>
-              
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Mar 17 2024</td>
-                            <td>Micheal Cole </td>
-                            <td><span class="badge bg-success">Sent</span></td>
-              
-                          </tr>
-                          <tr>
-                            <th scope="row">4</th>
-                            <td>Mar 23 2024</td>
-                            <td>Joel Bradvka </td>
-                            <td><span class="badge bg-success">Sent</span></td>
-              
-                          </tr>
+                            @php
+                                $n = 1
+                            @endphp
+                            @foreach ($followUp as $quote)
+                                <tr>
+                                    <th scope="row">{{$n++}}</th>
+                                    <td>{{$quote->created_at->format('M-d-Y')}}</td>
+                              
+                                    <td><a href="{{route('admin.quotation.preview', ['quote_id'=>$quote->uuid])}}" style="text-decoration: none; ">{{$quote->client->first_name}} {{$quote->client->last_name}} </a> </td>
+                                    <td><span class="badge bg-success">{{$quote->status}}</span></td>
+                                    <td> <a href="{{route('admin.quotation', ['uuid'=>$quote->uuid])}}" class="btn btn-success btn-sm">
+                                        <i class="align-middle" data-feather="file"></i> Resend Quotation
+                                    </a></td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -150,42 +146,34 @@
                     <table class="table">
                         <thead>
                           <tr>
-                            <th scope="col">#</th>
+                            <th scope="col">Date</th>
                             <th scope="col">Name</th>
+                            <th>Action</th>
+                            <th></th>
                             <th></th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Noel Cole </td>
-                            <td><span class="badge bg-success">Pending</span></td>
-              
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Tim Frantz </td>
-                            <td><span class="badge bg-success">Pending</span></td>
-              
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Micheal Cole </td>
-                            <td><span class="badge bg-success">Pending</span></td>
-              
-                          </tr>
-                          <tr>
-                            <th scope="row">4</th>
-                            <td>Joel Bradvka </td>
-                            <td><span class="badge bg-success">Pending</span></td>
-              
-                          </tr>
+                            @php
+                            $n = 1
+                        @endphp
+                        @foreach ($pendingRfq as $rfq)
+                            <tr>
+                                <td>{{$rfq->created_at->format('M-d-Y')}}</td>
+                          
+                                <td><a href="{{route('admin.quotation.preview', ['quote_id'=>$rfq->uuid])}}" style="text-decoration: none; ">{{$rfq->client->first_name}} {{$rfq->client->last_name}} </a> </td>
+
+                                <td> <a href="{{route('admin.rfq.preview', ['uuid'=>$rfq->uuid])}}" class="btn btn-primary btn-sm"> <i class="align-middle" data-feather="eye"></i> Preview</a></td>
+                                <td><a href="{{route('admin.quotation', ['uuid'=>$rfq->uuid])}}" class="btn btn-success btn-sm"> <i class="align-middle" data-feather="file"></i> Generate Quote</a></td>
+                                <td></td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-
+{{-- 
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">RFQ Conversion Rate</div>
@@ -218,7 +206,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 @endsection
 @section('scripts')

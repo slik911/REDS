@@ -25,47 +25,47 @@
             <div class="row row-cols-1 row-cols-3 g-4 mb-4">
                 <div class="col">
                   <div class="card">
-                    <a href="#"><img src="assets/Frame 4.png" class="card-img-top" alt="Frame"></a>
+                    <a href="#"><img src="{{asset('assets/Frame 4.png')}}" class="card-img-top" alt="Frame"></a>
                   </div>
                 </div>
                 <div class="col">
                   <div class="card">
-                    <img src="assets/Frame 6.png" class="card-img-top" alt="Frame">
+                    <img src="{{asset('assets/Frame 6.png')}}" class="card-img-top" alt="Frame">
                   </div>
                 </div>
                 <div class="col">
                   <div class="card">
-                    <img src="assets/Frame 5.png" class="card-img-top" alt="Frame">
+                    <img src="{{asset('assets/Frame 5.png')}}" class="card-img-top" alt="Frame">
                   </div>
                 </div>
                 <div class="col">
                   <div class="card">
-                    <img src="assets/Frame 7.png" class="card-img-top" alt="Frame">
+                    <img src="{{asset('assets/Frame 7.png')}}" class="card-img-top" alt="Frame">
                   </div>
                 </div>
                 <div class="col">
                   <div class="card">
-                    <img src="assets/Frame 4.png" class="card-img-top" alt="Frame">
+                    <img src="{{asset('assets/Frame 4.png')}}" class="card-img-top" alt="Frame">
                   </div>
                 </div>
                 <div class="col">
                   <div class="card">
-                    <img src="assets/Frame 6.png" class="card-img-top" alt="Frame">
+                    <img src="{{asset('assets/Frame 6.png')}}" class="card-img-top" alt="Frame">
                   </div>
                 </div>
                 <div class="col">
                   <div class="card">
-                    <img src="assets/Frame 5.png" class="card-img-top" alt="Frame">
+                    <img src="{{asset('assets/Frame 5.png')}}" class="card-img-top" alt="Frame">
                   </div>
                 </div>
                 <div class="col">
                   <div class="card">
-                    <img src="assets/Frame 7.png" class="card-img-top" alt="Frame">
+                    <img src="{{asset('assets/Frame 7.png')}}" class="card-img-top" alt="Frame">
                   </div>
                 </div>
                 <div class="col">
                     <div class="card">
-                      <img src="assets/Frame 5.png" class="card-img-top" alt="Frame">
+                      <img src="{{asset('assets/Frame 5.png')}}" class="card-img-top" alt="Frame">
                     </div>
                 </div>
             </div>

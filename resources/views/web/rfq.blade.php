@@ -78,7 +78,8 @@
             </div>
             <div class="col-md-3">
                 <label for="postalCode" class="form-label required">Postal Code</label>
-                <input type="text" class="form-control" id="postalCode" name="postal_code" placeholder="Eg: A9A 9A9" required>
+                <input type="text" class="form-control" id="postalCode" name="postal_code" placeholder="Eg: A9A 9A9"  minlength="6"
+                maxlength="6"  required>
                 <div class="invalid-feedback">Please enter your postal code.</div>
             </div>
             <div class="col-md-12">

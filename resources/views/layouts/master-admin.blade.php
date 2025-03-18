@@ -5,9 +5,7 @@
 <head>
 	{{-- @vite(['resources/css/app-admin.css', 'resources/js/app-admin.js', 'resources/js/datatables.js']) --}}
 	<link rel="stylesheet" href="{{asset('css/app-admin.css')}}">
-	<link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
-	<script src="{{asset('js/app-admin.js')}}"></script>
-	<script src="{{asset('js/datatables.js')}}"></script>
+
 
 
 
@@ -136,6 +134,8 @@
 	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
+	<script src="{{asset('js/app-admin.js')}}"></script>
+	<script src="{{asset('js/datatables.min.js')}}"></script>
 	<script>
 		 	document.addEventListener("DOMContentLoaded", function() {
 			// Datatables with Buttons
