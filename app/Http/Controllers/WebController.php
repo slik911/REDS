@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
+use App\Models\Rental;
+use App\Models\ServiceList;
 use Illuminate\Http\Request;
 
 class WebController extends Controller
 {
     public function index(){
-        return view('welcome');
+        $services = ServiceList::with('image')->get();
+        $rentals =  Post::has('rental')->with('rental')->orderBy('id', 'desc')->get();
+
+        return view('welcome', compact('services', 'rentals'));
     }
 
     public function about(){

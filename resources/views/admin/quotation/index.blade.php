@@ -70,7 +70,7 @@
                                  @endif
 
                                 @if ($quote->status != 'draft')
-                                    <a href="{{route('admin.quotation', ['uuid'=>$quote->uuid])}}" class="btn btn-success btn-sm">
+                                    <a href="{{route('admin.quotation.send', ['quote_id'=>$quote->uuid])}}" class="btn btn-success btn-sm">
                                         <i class="align-middle" data-feather="file"></i> Resend Quotation
                                     </a>
                                 @endif

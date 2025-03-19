@@ -113,24 +113,23 @@ body {
 /* Rentals Section */
 #home-rentals {
     align-items: center;
-    border: 0.1rem;
-    border-radius: 1rem;
     margin: 1%;
+}
+
+.rentals a{
+    text-decoration: none;
+    color:#0A2540;
+}
+
+.rentals a:hover{
+    color:none;
 }
 
 /* Testimonials Section */
 
 #testimony {
     align-items: center;
-    border: 0.1rem;
-    border-radius: 1rem;
-    margin: 1%;
-}
-
-#testimony img {
-    border-radius: 15rem;
-    width: 65%;
-    margin: 10%;
+    border:none
 }
 
 
@@ -191,6 +190,8 @@ body {
 
 .rentals{
     margin-bottom: 5%;
+    background-color: #0A2540;
+    color:#fff;
 }
 
 /*

@@ -86,24 +86,16 @@
             </p>
             <div class="row">
                 <div class="col-md-3">
-                  <div class="card">
                     <img src="{{asset('assets/Frame 4.png')}}" class="card-img-top" alt="Frame">
-                  </div>
                 </div>
                 <div class="col-md-3">
-                  <div class="card">
                     <img src="{{asset('assets/Frame 6.png')}}" class="card-img-top" alt="Frame">
-                  </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="card">
                       <img src="{{asset('assets/Frame 5.png')}}" class="card-img-top" alt="Frame">
-                    </div>
                   </div>
                   <div class="col-md-3">
-                    <div class="card">
                       <img src="{{asset('assets/Frame 7.png')}}" class="card-img-top" alt="Frame">
-                    </div>
                   </div>
             </div>
 
@@ -120,157 +112,65 @@
                 <b>Renovations:</b> Painting, drywalling, basement development, and tiling tailored to your style.
                 <b>Rentals:</b> Hassle-free room listings in prime locations, perfect for tenants and property investors. 
             </p>
-            <div class="card-group p-2">
-                <div class="card" style="width: 300px;" id="home-services">
-                    <img class="card-img-top"  src="{{asset('assets/basement.svg')}}" alt="testimony1">
-                    <div class="card-body">
-                        <div class="card-title">
-                            <h6 style="text-align: center; font-weight: bold;">Basement Development</h6>
-                        </div>
-                        <div class="card-text">
-                            <p style="text-align: center;">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br><br>
-                                <a href="{{route('reno')}}"><button>Learn more</button></a>
-                            </p>
+               <div class="row">
+                @foreach ($services as $service)
+                    <div class="col-md-3 card mt-5" style="border:none;">
+                        <img class="card-img-top img-fluid"  src="{{$service->image->url}}" style="height:250px; object-fit:cover"  alt="testimony1">
+                        <div class="card-body">
+                        <h5 class="card-title" style="font-weight: bold">{{$service->name}}</h5>
+                        <p class="card-text">{{$service->description}}</p>
                         </div>
                     </div>
-                </div>
-                <div class="card" style="width: 300px;" id="home-services">
-                    <img class="card-img-top"  src="{{asset('assets/paint_brush.svg')}}" alt="testimony1">
-                    <div class="card-body">
-                        <div class="card-title">
-                            <h6 style="text-align: center; font-weight: bold;">Painting</h6>
-                        </div>
-                        <div class="card-text">
-                            <p style="text-align: center;">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br><br>
-                                <a href="{{route('reno')}}"><button>Learn more</button></a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card" style="width: 300px;" id="home-services">
-                    <img class="card-img-top"  src="{{asset('assets/tiling.svg')}}" alt="testimony1">
-                    <div class="card-body">
-                        <div class="card-title">
-                            <h6 style="text-align: center; font-weight: bold;">Tiling</h6>
-                        </div>
-                        <div class="card-text">
-                            <p style="text-align: center;">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br><br>
-                                <a href="{{route('reno')}}"><button>Learn more</button></a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card" style="width: 300px;" id="home-services">
-                    <img class="card-img-top"  src="{{asset('assets/wall.svg')}}" alt="testimony1">
-                    <div class="card-body">
-                        <div class="card-title">
-                            <h6 style="text-align: center; font-weight: bold;">Dry walling</h6>
-                        </div>
-                        <div class="card-text">
-                            <p style="text-align: center;">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br><br>
-                                <a href="{{route('reno')}}"><button>Learn more</button></a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                @endforeach
+               </div>
         </div>
     </section>
 
 
     <!--Rentals-->
-    <section class="Rentals p-3">
-        <div class="container mb-3">
+    <section class="rentals p-4">
+        <div class="container mb-5">
             <p><h1 style="text-align: center;">Rentals</h1></p>
             <p style="text-align: center;">
                 Discover curated room listings designed for modern living. From cozy studios to spacious shared units, 
                 we connect tenants to quality rentals and help landlords maximize property value. Your ideal space is just a click away.
             </p>
-            <div class="card-group p-2">
-                <div class="card" id="home-rentals" >
-                    <img class="card-img-top"  src="{{asset('assets/Frame 5-2.png')}}" alt="testimony1">
-                    <div class="card-body">
-                        <div class="card-title">
-                            <h6>FEBRUARY 11, 2025</h6>
+            <div class="row">
+                @foreach ($rentals as $rental)
+                    <div class="col-md-3 card" style="background:none; border:none" >
+                        
+                        <a href=""><img class="card-img-top"  src="{{$rental->uploads[0]->url}}" style="height: 250px; border-radius:0px; object-fit:cover" alt="testimony1"></a>
+                        <div class="card-body" style="background-color: #fff">
+                            <div class="card-title" style="font-weight:bold">
+                               <a href=""> {{substr($rental->title, 0 , 50)}}</a>
+                            </div>
+                            <div class="card-text">
+                                <p style="font-size: 12px !important">
+                                    {{ substr(strip_tags($rental->description), 0, 100)}}...
+                                </p>   
+                                <h6 style="font-weight:bold; color:#0A2540; font-size:13px">CAD {{number_format($rental->rental->price)}}</h6> 
+                            </div>
                         </div>
-                        <div class="card-text">
-                            <p style="font-size: small; ">
-                                <b>Coming Soon</b><br><br>
-                                Lorem ipsurm dolor sit amet, consectetur adipisicing elit
-                            </p>    
-                        </div>
-                            <a href="{{route('rental')}}">Read more</a>
                     </div>
-                </div>
-                <div class="card" id="home-rentals" >
-                    <img class="card-img-top"  src="{{asset('assets/Frame 6-2.png')}}" alt="testimony1">
-                    <div class="card-body">
-                        <div class="card-title">
-                            <h6>FEBRUARY 11, 2025</h6>
-                        </div>
-                        <div class="card-text">
-                            <p style="font-size: small; ">
-                                <b>Coming Soon</b><br><br>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit
-                            </p>    
-                        </div>
-                            <a href="rental.html">Read more</a>
-                    </div>
-                </div>
-                <div class="card" id="home-rentals" >
-                    <img class="card-img-top"  src="{{asset('assets/Frame 13.png')}}" alt="testimony1">
-                    <div class="card-body">
-                        <div class="card-title">
-                            <h6>FEBRUARY 11, 2025</h6>
-                        </div>
-                        <div class="card-text">
-                            <p style="font-size: small; ">
-                                <b>Coming Soon</b><br><br>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit
-                            </p>    
-                        </div>
-                            <a href="rental.html">Read more</a>
-                    </div>
-                </div>
-                <div class="card" id="home-rentals" >
-                    <img class="card-img-top"  src="{{asset('assets/Frame 6-1.png')}}" alt="testimony1">
-                    <div class="card-body">
-                        <div class="card-title">
-                            <h6>FEBRUARY 11, 2025</h6>
-                        </div>
-                        <div class="card-text">
-                            <p style="font-size: small; ">
-                                <b>Coming Soon</b><br><br>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit
-                            </p>    
-                        </div>
-                            <a href="{{route('rental')}}">Read more</a>
-                    </div>
-                </div>
-
-
+                @endforeach
             </div>
         </div>
 
     </section>
 
     <!--Testimonials-->
-    <section class="testimonials p-3">
-        <div class="container mb-3 text-align center">
+    <section class="testimonials">
+        <div class="container text-align center">
             <p><h1 style="text-align: center;">Testimonials</h1></p>
             <p style="text-align: center;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi unde impedit, necessitatibus, soluta sit quam minima expedita atque 
                 corrupti reiciendis.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
             </p>
-            <div class="card-group p-2">
-                <div class="card" style="width: 300px;" id="testimony">
-                    <img class="card-img-top"  src="{{asset('assets/testimonies.jpg')}}" alt="testimony1">
+            <div class="row">
+                <div class="col-md-4 card " id="testimony">
+                    <img class="card-img-top"  src="{{asset('assets/testimonies.jpg')}}" style="width:150px; height:150px; object-fit:cover" alt="testimony1">
                     <div class="card-body">
                         <div class="card-title">
-                            <h3 style="text-align: center;">Jane Doe</h3>
+                            <h5 style="text-align: center; font-weight:bold">Justin Trudeau</h5>
                         </div>
                         <div class="card-text">
                             <p style="text-align: center;">
@@ -281,31 +181,29 @@
                         </div>
                     </div>
                 </div>
-                <div class="card" style="width: 300px;" id="testimony">
-                    <img class="card-img-top"  src="{{asset('assets/testimonies.jpg')}}" alt="testimony1">
+                <div class="col-md-4 card " id="testimony">
+                    <img class="card-img-top"  src="{{asset('assets/testimonies.jpg')}}" style="width:150px; height:150px; object-fit:cover" alt="testimony1">
                     <div class="card-body">
                         <div class="card-title">
-                            <h3 style="text-align: center;">Jane Doe</h3>
+                            <h5 style="text-align: center;  font-weight:bold">Jane Smith</h5>
                         </div>
                         <div class="card-text">
                             <p style="text-align: center;">
-                                "These guys are the real deal—smooth operations, top-notch work, and zero hassle. If you want it done right, 
-                                they’re the ones to call!"<br>
+                                "I had the most amazing experience with this service! The team was professional, efficient, and truly attentive to my needs. They made sure everything was perfect, and I couldn't be happier with the results!"<br>
                                 <img src="{{asset('assets/quotation-marks.svg')}}" alt="quotation-marks" width="25" height="25">
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="card" style="width: 300px;" id="testimony">
-                    <img class="card-img-top"  src="{{asset('assets/testimonies.jpg')}}" alt="testimony1">
+                <div class="col-md-4 card " id="testimony">
+                    <img class="card-img-top"  src="{{asset('assets/testimonies.jpg')}}" style="width:150px; height:150px; object-fit:cover" alt="testimony1">
                     <div class="card-body">
                         <div class="card-title">
-                            <h3 style="text-align: center;">Jane Doe</h3>
+                            <h3 style="text-align: center;  font-weight:bold">Emily White</h5>
                         </div>
                         <div class="card-text">
                             <p style="text-align: center;">
-                                "These guys are the real deal—smooth operations, top-notch work, and zero hassle. If you want it done right, 
-                                they’re the ones to call!"<br>
+                                "From start to finish, everything was smooth and hassle-free. The level of customer care provided was exceptional, and I highly recommend this service to anyone in need of quality and reliability."<br>
                                 <img src="{{asset('assets/quotation-marks.svg')}}" alt="quotation-marks" width="25" height="25">
                             </p>
                         </div>
