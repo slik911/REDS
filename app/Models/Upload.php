@@ -36,4 +36,6 @@ class Upload extends Model
     {
         return $this->belongsToMany(Post::class, 'post_uploads', 'upload_id', 'post_id');
     }
+
+    
 }

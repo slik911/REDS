@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Functions;
 use App\Http\Controllers\Controller;
 use App\Models\ServiceList;
+use App\Models\Upload;
 use App\Validations\ServiceListValidation;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -40,10 +42,23 @@ class ServiceListController extends Controller
         }
 
         try {
+            
+
+            if ($request->hasFile('image')) {
+                //upload image to cloudinary and returns the image url
+                $image = new Functions();
+                $image_url = $image->uploadImage($request->file('image'), 'services');
+
+                //store the image url in the database
+                $upload = Upload::store($image_url);
+            }
+
             ServiceList::create([
                 'uuid'=> Str::uuid(),
                 'name' => $request->name,
                 'slug' => Str::slug($request->name, "_"),
+                'image_id' => $upload->uuid,
+                'description'=> $request->description
             ]);
             notyf()->success('Service created successfully');
             return redirect()->route('admin.service');
@@ -68,9 +83,21 @@ class ServiceListController extends Controller
             return redirect()->back();
         }
         try {
+
+            if ($request->hasFile('image')) {
+                //upload image to cloudinary and returns the image url
+                $image = new Functions();
+                $image_url = $image->uploadImage($request->file('image'), 'users');
+
+                //store the image url in the database
+                $upload = Upload::store($image_url);
+            }
+
             ServiceList::where('uuid', $request->uuid)->update([
                 'name' => $request->name,
                 'slug' => Str::slug($request->name, "_"),
+                'description'=> $request->description,
+                'image_id'=> $upload->uuid
             ]);
             notyf()->success('Service updated successfully');
             return redirect()->route('admin.service');

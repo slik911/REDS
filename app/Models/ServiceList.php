@@ -10,10 +10,15 @@ class ServiceList extends Model
 {
     use SoftDeletes, GeneratesUniqueIds;
     
-    protected $fillable = ['uuid', 'name', 'slug', 'status'];
+    protected $fillable = ['uuid', 'name', 'slug','description', 'image_id', 'status'];
 
     public function getRouteKeyName(): string
     {
         return 'slug';
+    }
+
+    public function image()
+    {
+        return $this->hasOne(Upload::class, 'uuid', 'image_id');
     }
 }
