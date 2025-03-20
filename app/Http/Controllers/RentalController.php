@@ -41,6 +41,8 @@ class RentalController extends Controller
         
         try {
 
+           
+
             DB::beginTransaction();
             $post = Post::create([
                 'user_id'=> Auth::user()->uuid,

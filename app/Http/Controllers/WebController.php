@@ -12,7 +12,7 @@ class WebController extends Controller
 {
     public function index(){
         $services = ServiceList::with('image')->get();
-        $rentals =  Post::has('rental')->with('rental')->orderBy('id', 'desc')->get();
+        $rentals =  Post::has('rental')->with('rental')->orderBy('id', 'desc')->where('status', true)->get();
 
         return view('welcome', compact('services', 'rentals'));
     }
@@ -22,7 +22,12 @@ class WebController extends Controller
     }
 
     public function rental(){
-        return view('web.rental');
+        $rentals =  Post::has('rental')->with('rental')->orderBy('id', 'desc')->where('status', true)->get();
+        return view('web.rental', compact('rentals'));
+    }
+
+    public function rentalView(){
+        return view('web.rentalPreview');
     }
 
     public function reno(){
