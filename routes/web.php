@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', [App\Http\Controllers\WebController::class, 'index'])->name('welcome');
 Route::get('/about', [App\Http\Controllers\WebController::class, 'about'])->name('about');
 Route::get('/rental', [App\Http\Controllers\WebController::class, 'rental'])->name('rental');
+Route::get('rental/preview/{uuid}', [App\Http\Controllers\WebController::class, 'rentalPreview'])->name('rental.preview');
 Route::get('/renovations', [App\Http\Controllers\WebController::class, 'reno'])->name('reno');
 Route::get('/project', [App\Http\Controllers\WebController::class, 'project'])->name('project');
 Route::get('/contact', [App\Http\Controllers\WebController::class, 'contact'])->name('contact');

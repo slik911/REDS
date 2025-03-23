@@ -26,6 +26,11 @@ class WebController extends Controller
         return view('web.rental', compact('rentals'));
     }
 
+    public function rentalPreview($uuid){
+        $rental =  Post::has('rental')->with('rental')->orderBy('id', 'desc')->where('uuid', $uuid)->first();
+        return view('web.rentalPreview', compact('rental'));
+    }
+
     public function rentalView(){
         return view('web.rentalPreview');
     }

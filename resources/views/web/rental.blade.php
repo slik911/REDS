@@ -25,10 +25,10 @@
         <div class="row">
             @foreach ($rentals as $rental)
                 <div class="col-md-3 card" style="background:none; border:none" >
-                    <a href=""><img class="card-img-top"  src="{{$rental->uploads[0]->url}}" style="height: 250px; border-radius:0px; object-fit:cover" alt="testimony1"></a>
+                    <a href="{{route('rental.preview', ['uuid'=>$rental->uuid])}}"><img class="card-img-top"  src="{{$rental->uploads[0]->url}}" style="height: 250px; border-radius:0px; object-fit:cover" alt="testimony1"></a>
                     <div class="card-body" style="background-color: #fff; border:1px solid #ccc">
                         <div class="card-title" style="font-weight:bold">
-                           <a href="" class="text-decoration-none" style="color:#0A2540"> {{substr($rental->title, 0 , 50)}}</a>
+                           <a href="{{route('rental.preview', ['uuid'=>$rental->uuid])}}" class="text-decoration-none" style="color:#0A2540"> {{substr($rental->title, 0 , 50)}}</a>
                         </div>
                         <div class="card-text">
                             <p style="font-size: 12px !important">
