@@ -9,13 +9,14 @@
     <link rel="icon" href="./assets/FVClogo.png">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <script src="{{asset('js/script.js')}}"></script>
-    <title>firstvisioncontracting</title>
+    <title>First Vision Contracting</title>
+    @yield('styles')
 </head>
 <body>
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <div class="container">
-            <a href="/" class="navbar-brand"><img src="./assets/FVClogo.png" alt="logo" width="40" height="40"></a>
+            <a href="/" class="navbar-brand"><img src="{{asset('assets/FVClogo.png')}}" alt="logo" width="40" height="40"></a>
 
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-label="Expand Navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -207,5 +208,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@1.2.0/dist/css/splide.min.css"></script>
+    @yield('scripts')
 </body>
 </html>

@@ -1,15 +1,27 @@
 @extends('layouts.master-web')
+<style>
+    .jumbotron{
+        background-image: url('../assets/Frame 3.png');
+        background-position: center;
+        background-size: cover;
+        height:400px;
+    }
+
+    .page-link{
+        color:#0A2540 !important;
+    }
+
+    .page-item.active .page-link {
+    background-color: #0A2540 !important;
+    color: #fff !important;
+    border-color: #0A2540 !important;
+}
+</style>
 @section('content')
-  
-    <!--Carousel-->
-    <div class="carousel-item active c-item">
-        <img
-          src="{{asset('assets/Frame 3.png')}}"
-          class="d-block w-100 c-img"
-          alt="carousel1"
-        />
-        <div class="carousel-caption cbanner-caption">
-          <h1>RENOVATIONS</h1>
+
+      <div class="jumbotron jumbotron-fluid d-flex align-items-center">
+        <div class="container text-center">
+          <h1 class="display-4">Renovations</h1>
           <nav class="breadcrumb-nav" aria-label="breadcrumb">
             <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
@@ -19,36 +31,26 @@
         </nav>
         </div>
       </div>
-  
-      <div class="container-fluid" style="margin-top:500px">
-        <div class="renovations-container d-flex flex-column flex-md-row">
-            <div class="text-content w-100 w-md-50 ">
-                <h1 class="mt-5">Renovations</h1>
-                <p>Renovate with ConfidencePainting & Drywalling: Refresh your home with crisp,
-                    long-lasting finishes. Basement Development: Unlock hidden potential—create rental suites, 
-                    home theaters, or guest rooms. Tiling: Durable, stylish solutions for kitchens, bathrooms, and beyond. From concept to completion, we handle every detail so you don’t have to.</p>
-                <!-- <button class="btn btn-custom">GET QUOTE</button> -->
-            </div>
-            <div class="tiles-container w-100 w-md-50 d-flex flex-wrap">
-                <div class="tile w-50 text-center p-3">
-                    <img src="/assets/wall.svg" alt="Basement Development" class="img-fluid">
-                    <a href="#" class="tile-title">Basement Development</a>
-                </div>
-                <div class="tile w-50 text-center p-3">
-                    <img src="/assets/wall.svg" alt="Painting" class="img-fluid">
-                    <a href="#" class="tile-title">Painting</a>
-                </div>
-                <div class="tile w-50 text-center p-3">
-                    <img src="/assets/wall.svg" alt="Tiling" class="img-fluid">
-                    <a href="#" class="tile-title">Tiling</a>
-                </div>
-                <div class="tile w-50 text-center p-3">
-                    <img src="/assets/wall.svg" alt="Dry Walling" class="img-fluid">
-                    <a href="#" class="tile-title">Dry Walling</a>
+
+      <div class="renovations">
+        <div class="container">
+            <div class="row">
+                @foreach ($services as $service)
+                    <div class="col-md-3 card mt-5" style="border:none">
+                        <img class="card-img-top img-fluid"  src="{{$service->image->url}}" style="height:250px; object-fit:cover; border-radius:0"  alt="testimony1">
+                        <div class="card-body" style="border:1px solid #ccc">
+                        <h5 class="card-title" style="font-weight: bold;">{{$service->name}}</h5>
+                        <p class="card-text">{{$service->description}}</p>
+                        </div>
+                    </div>
+                @endforeach
+                <div class="col-12 mt-5">
+                {!! $services->withQueryString()->links('pagination::bootstrap-5') !!}
                 </div>
             </div>
+
         </div>
-    </div>
+      </div>
         
 @endsection
 

@@ -7,11 +7,12 @@ use App\Models\Post;
 use App\Models\Rental;
 use App\Models\ServiceList;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 
 class WebController extends Controller
 {
     public function index(){
-        $services = ServiceList::with('image')->get();
+        $services = ServiceList::with('image')->limit(4)->get();
         $rentals =  Post::has('rental')->with('rental')->orderBy('id', 'desc')->where('status', true)->get();
 
         return view('welcome', compact('services', 'rentals'));
@@ -22,12 +23,13 @@ class WebController extends Controller
     }
 
     public function rental(){
-        $rentals =  Post::has('rental')->with('rental')->orderBy('id', 'desc')->where('status', true)->get();
+        $rentals =  Post::has('rental')->with('rental')->orderBy('id', 'desc')->where('status', true)->paginate(12);
         return view('web.rental', compact('rentals'));
     }
 
     public function rentalPreview($uuid){
         $rental =  Post::has('rental')->with('rental')->orderBy('id', 'desc')->where('uuid', $uuid)->first();
+        // dd(json_decode($rental->rental->meta_data));
         return view('web.rentalPreview', compact('rental'));
     }
 
@@ -36,7 +38,8 @@ class WebController extends Controller
     }
 
     public function reno(){
-        return view('web.renovation');
+        $services = ServiceList::with('image')->paginate(12);
+        return view('web.renovation', compact('services'));
     }
 
     public function project(){

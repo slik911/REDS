@@ -1,4 +1,18 @@
 @extends('layouts.master-web')
+@section('styles')
+    <style>
+
+    .page-link{
+        color:#0A2540 !important;
+    }
+
+    .page-item.active .page-link {
+    background-color: #0A2540 !important;
+    color: #fff !important;
+    border-color: #0A2540 !important;
+}
+</style>
+@endsection
 @section('content')
 
       <div id="home-carousel" class="carousel slide" data-bs-ride="carousel">
@@ -39,6 +53,9 @@
                     </div>
                 </div>
             @endforeach
+            <div class="col-12 mt-5">
+                {!! $rentals->withQueryString()->links('pagination::bootstrap-5') !!}
+                </div>
         </div>
     </div>
     </section>

@@ -14,7 +14,8 @@
        
             <div class="mb-3 col-md-12">
                 <label for="description" class="form-label">Description</label>
-                <textarea name="description" id="" class="form-control" cols="30" rows="10"></textarea>
+                <textarea name="description" id="" class="form-control" cols="30" rows="10" oninput="limitWords(this, 30)"></textarea>
+                <small id="wordCount" class="text-muted">0/30 words</small>
             </div>
         </div>
         <div class="col-md-6">
@@ -36,6 +37,18 @@
             if (file) {
                 blah.src = URL.createObjectURL(file)
             }
+        }
+
+        function limitWords(textarea, maxWords) {
+            let words = textarea.value.match(/\b[-?(\w+)?]+\b/g) || []; // Match words
+            let wordCount = words.length;
+
+            if (wordCount > maxWords) {
+                textarea.value = words.slice(0, maxWords).join(" "); // Trim words
+                wordCount = maxWords;
+            }
+
+            document.getElementById("wordCount").textContent = `${wordCount}/${maxWords} words`;
         }
    </script>
     
