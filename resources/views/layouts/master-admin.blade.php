@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-	<link rel="icon" href="./assets/FVClogo.png">
+	<link rel="icon" href="{{asset('assets/FVClogo.png')}}">
 	{{-- @vite(['resources/css/app-admin.css', 'resources/js/app-admin.js', 'resources/js/datatables.js']) --}}
 	<link rel="stylesheet" href="{{asset('css/app-admin.css')}}">
 	<title>@yield('title')</title>

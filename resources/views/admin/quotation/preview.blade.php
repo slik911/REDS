@@ -19,7 +19,9 @@
     <section class="heading">
         <div class="container">
             <div class="row d-flex justify-content-between align-items-start">
-                
+                <div class="d-flex justify-content-end align-items-center mb-4" style="display: flex; justify-content: right; align-items: center;">
+                    <a href="{{route('admin.quotation.send', ['quote_id'=>$quotation->uuid])}}" class="btn btn-primary"> <i class="align-middle" data-feather="print"></i>Send Email Quotation</a>
+                </div>
                 <div class="col-md-6">
                     <h3 class="mb-4" style="font-weight: bold">FIRST VISION CONTRACTING</h3>
                     <p>Operated by 2589813 Alberta Ltd.</p>

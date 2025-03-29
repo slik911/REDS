@@ -39,7 +39,8 @@ class QuotationController extends Controller
 
     public function getClientInfo(Request $request){
 
-        $client = Client::where('uuid', $request->uuid)->first();
+        $client = Client::with('rfq')->where('uuid', $request->uuid)->first();
+        
         return response()->json($client);
     }
 

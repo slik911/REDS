@@ -99,9 +99,15 @@ $(document).ready(function () {
          },
          success: function(response) {
              if (response) {
-                console.log(response);
                  $("#phone").val(response.phone_number).prop("readonly", true)
                  $("#email ").val(response.email).prop("readonly", true);
+                 $("#rfq_id").empty().append('<option value="">Select RFQ</option>'); // Clear and add default option
+                    
+                    if(response.rfq.length > 0) {
+                        $.each(response.rfq, function(index, rfq) {
+                            $("#rfq_id").append('<option value="' + rfq.uuid + '">' + rfq.RFQ_number + '</option>');
+                        });
+                    }
              }
              else {
                  console.log(response.message);
@@ -152,12 +158,12 @@ $(document).ready(function () {
                         <div class="mb-3 col-md-6">
                             <label for="title" class="form-label">REFERENCE NUMBER</label>
                             <select name="rfq_id" id="rfq_id" class="form-select">
-                                <option value="">No RFQ</option>
-
+                                <option value="">Select RFQ</option>
                                 @foreach ($rfqs as $rfq)
                                     <option value="{{ $rfq->uuid }}" {{ $rfq_number == $rfq->rfq_number ? 'selected' : '' }}>{{ $rfq->rfq_number }}</option>
                                 @endforeach
                             </select>
+                            <small class="text-danger">Not required</small>
                         </div>
 
                         <div class="mb-3 col-md-6">
@@ -174,7 +180,7 @@ $(document).ready(function () {
             <div class="mb-3 col-md-12">
                 <label class="form-label">Services</label>
                 <div id="services-container" class="table-responsive">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered wrap table-responsive">
                         <thead class="table">
                             <tr>
                                 <th style="width: 5%;">#</th>
@@ -190,7 +196,8 @@ $(document).ready(function () {
                             <tr class="feature-row">
                                 <td class="row-number">1</td> <!-- Row Number -->
                                 <td>
-                                    <select name="services[]" class="form-select">
+                                    <select name="services[]" class="form-select" required>
+                                        <option value="">select Service</option>
                                         @foreach ($services as $service)
                                             <option value="{{ $service->uuid }}">{{ $service->name }}</option>
                                         @endforeach
@@ -200,16 +207,16 @@ $(document).ready(function () {
                                     <trix-toolbar id="my_toolbar_1" class="mt-2"  style="max-width:350px"></trix-toolbar>
                                     <input type="hidden" name="description[]" class="content-field" id="my_input_1">
                                     <input class="my_input_1" type="hidden" value="">
-                                    <trix-editor toolbar="my_toolbar_1" input="my_input_1"  style="max-width:350px"></trix-editor>                    
+                                    <trix-editor toolbar="my_toolbar_1" input="my_input_1"  style="max-width:350px" required></trix-editor>                    
                                 </td>
                                 <td>
-                                    <input type="number" name="unit_price[]" class="form-control unit-price" value="0" step="0.01" oninput="calculateTotal(this)">
+                                    <input type="number" name="unit_price[]" required class="form-control unit-price" value="0" step="0.01" oninput="calculateTotal(this)">
                                 </td>
                                 <td>
-                                    <input type="number" name="quantity[]" class="form-control quantity" value="1" min="1" oninput="calculateTotal(this)">
+                                    <input type="number" name="quantity[]" required class="form-control quantity" value="1" min="1" oninput="calculateTotal(this)">
                                 </td>
                                 <td>
-                                    <input type="text" name="total[]" class="form-control total" value="0" readonly>
+                                    <input type="text" name="total[]" required class="form-control total" value="0" readonly>
                                 </td>
                                 <td>
                                     <div class="d-flex gap-2">
@@ -217,6 +224,7 @@ $(document).ready(function () {
                                         <button type="button" class="btn btn-danger remove-feature">-</button>
                                     </div>
                                 </td>
+
                             </tr>
                         </tbody>
                     </table>

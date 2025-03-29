@@ -30,7 +30,11 @@
                         </td>
                         <td>{{$quote->created_at->format('M-d-Y')}}</td>
                         <td>{{$quote->quote_number}}</td>
-                        <td><a href="{{route('admin.rfq.preview', ['uuid'=>$quote->rfq->uuid])}}">{{$quote->rfq->RFQ_number}}</a></td>
+                        <td>@if ($quote->rfq)
+                            <a href="{{route('admin.rfq.preview', ['uuid'=>$quote->rfq->uuid])}}">{{$quote->rfq->RFQ_number}}</a>
+                        @else
+                            NO RFQ
+                        @endif</td>
                         <td style="text-transform: capitalize">
                             {{$quote->client->last_name}} {{$quote->client->first_name}}    
                         </td>
@@ -65,20 +69,20 @@
                                 </a>
                                 @if ($quote->status == 'draft')
                                 <a href="{{route('admin.quotation', ['uuid'=>$quote->uuid])}}" class="btn btn-success btn-sm">
-                                    <i class="align-middle" data-feather="pen"></i> Edit
+                                   Edit
                                 </a>
                                  @endif
 
                                 @if ($quote->status != 'draft')
                                     <a href="{{route('admin.quotation.send', ['quote_id'=>$quote->uuid])}}" class="btn btn-success btn-sm">
-                                        <i class="align-middle" data-feather="file"></i> Resend Quotation
+                                        Resend Quotation
                                     </a>
                                 @endif
 
 
                                 @if ($quote->status != 'draft')
                                     <a href="{{route('admin.quotation', ['uuid'=>$quote->uuid])}}" class="btn btn-success btn-sm">
-                                        <i class="align-middle" data-feather="file"></i> Cancel Quotation
+                                        Cancel Quotation
                                     </a>
                                 @endif
 
@@ -88,7 +92,7 @@
                                             document.getElementById('delete-category-form').submit();
                                         }" 
                                     class="btn btn-danger btn-sm">
-                                    <i class="align-middle" data-feather="trash-2"></i> Delete
+                                     Delete
                                 </a>
                             </div>
                         

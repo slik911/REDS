@@ -128,7 +128,7 @@
                               
                                     <td><a href="{{route('admin.quotation.preview', ['quote_id'=>$quote->uuid])}}" style="text-decoration: none; ">{{$quote->client->first_name}} {{$quote->client->last_name}} </a> </td>
                                     <td><span class="badge bg-success">{{$quote->status}}</span></td>
-                                    <td> <a href="{{route('admin.quotation', ['uuid'=>$quote->uuid])}}" class="btn btn-success btn-sm">
+                                    <td> <a href="{{route('admin.quotation.send', ['quote_id'=>$quote->uuid])}}" class="btn btn-success btn-sm">
                                         <i class="align-middle" data-feather="file"></i> Resend Quotation
                                     </a></td>
                                 </tr>
