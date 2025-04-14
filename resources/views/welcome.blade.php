@@ -114,7 +114,7 @@
             </p>
                <div class="row">
                 @foreach ($services as $service)
-                <div class="col-md-3 card mt-5" style="border:none">
+                <div class="col-md-3 col-12 card mt-5" style="border:none">
                     <img class="card-img-top img-fluid"  src="{{$service->image->url}}" style="height:250px; object-fit:cover; border-radius:0"  alt="testimony1">
                     <div class="card-body" style="border:1px solid #ccc">
                     <h5 class="card-title" style="font-weight: bold;">{{$service->name}}</h5>
@@ -137,7 +137,7 @@
             </p>
             <div class="row">
                 @foreach ($rentals as $rental)
-                    <div class="col-md-3 card" style="background:none; border:none" >
+                    <div class="col-md-3 col-12 card" style="background:none; border:none" >
                         
                         <a href="{{route('rental.preview', ['uuid'=>$rental->uuid])}}"><img class="card-img-top"  src="{{$rental->uploads[0]->url}}" style="height: 250px; border-radius:0px; object-fit:cover" alt="testimony1"></a>
                         <div class="card-body" style="background-color: #fff">
@@ -166,49 +166,24 @@
                 corrupti reiciendis.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
             </p>
             <div class="row">
-                <div class="col-md-4 card " id="testimony">
-                    <img class="card-img-top"  src="{{asset('assets/testimonies.jpg')}}" style="width:150px; height:150px; object-fit:cover" alt="testimony1">
+                @foreach ($testimonials as $testimonial)
+                <div class="col-md-4 card mt-md-5 mt-2 mb-md-5 mb-2" id="testimony">
+                    <img class="card-img-top "  src="{{asset('image/users.png')}}" style="width:100px; height:100px; object-fit:cover; border-radius:50px;" alt="testimony1">
                     <div class="card-body">
                         <div class="card-title">
-                            <h5 style="text-align: center; font-weight:bold">Justin Trudeau</h5>
+                            <h5 style="text-align: center; font-weight:bold">{{$testimonial->client->first_name}} {{$testimonial->client->last_name}}</h5>
                         </div>
                         <div class="card-text">
                             <p style="text-align: center;">
-                                "These guys are the real deal—smooth operations, top-notch work, and zero hassle. If you want it done right, 
-                                they’re the ones to call!"<br>
+                                {{substr(strip_tags($testimonial->message), 0, 100)}}...
+                                <br>
                                 <img src="{{asset('assets/quotation-marks.svg')}}" alt="quotation-marks" width="25" height="25">
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 card " id="testimony">
-                    <img class="card-img-top"  src="{{asset('assets/testimonies.jpg')}}" style="width:150px; height:150px; object-fit:cover" alt="testimony1">
-                    <div class="card-body">
-                        <div class="card-title">
-                            <h5 style="text-align: center;  font-weight:bold">Jane Smith</h5>
-                        </div>
-                        <div class="card-text">
-                            <p style="text-align: center;">
-                                "I had the most amazing experience with this service! The team was professional, efficient, and truly attentive to my needs. They made sure everything was perfect, and I couldn't be happier with the results!"<br>
-                                <img src="{{asset('assets/quotation-marks.svg')}}" alt="quotation-marks" width="25" height="25">
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 card " id="testimony">
-                    <img class="card-img-top"  src="{{asset('assets/testimonies.jpg')}}" style="width:150px; height:150px; object-fit:cover" alt="testimony1">
-                    <div class="card-body">
-                        <div class="card-title">
-                            <h3 style="text-align: center;  font-weight:bold">Emily White</h5>
-                        </div>
-                        <div class="card-text">
-                            <p style="text-align: center;">
-                                "From start to finish, everything was smooth and hassle-free. The level of customer care provided was exceptional, and I highly recommend this service to anyone in need of quality and reliability."<br>
-                                <img src="{{asset('assets/quotation-marks.svg')}}" alt="quotation-marks" width="25" height="25">
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </section>

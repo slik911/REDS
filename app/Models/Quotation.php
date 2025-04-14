@@ -18,6 +18,8 @@ class Quotation extends Model
         'tax',
         'total',
         'status',
+        'is_cancelled',
+        'cancelled_reason',
         'sub_total',
         'deleted_at',
     ];

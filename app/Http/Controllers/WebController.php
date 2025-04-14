@@ -6,16 +6,18 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\Rental;
 use App\Models\ServiceList;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
+use PHPUnit\Event\Code\Test;
 
 class WebController extends Controller
 {
     public function index(){
         $services = ServiceList::with('image')->limit(4)->get();
         $rentals =  Post::has('rental')->with('rental')->orderBy('id', 'desc')->where('status', true)->get();
-
-        return view('welcome', compact('services', 'rentals'));
+        $testimonials = Testimonial::with('client')->inRandomOrder()->limit(3)->get();
+        return view('welcome', compact('services', 'rentals', 'testimonials'));
     }
 
     public function about(){

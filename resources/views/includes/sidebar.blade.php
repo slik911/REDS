@@ -68,6 +68,14 @@
 
 
             
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('admin.testimonial') }}">
+                    <i class="align-middle" data-feather="message-circle"></i> <span class="align-middle">Testimonials</span>
+                </a>
+            </li>
+
+
+            
 
         </ul>
     </div>

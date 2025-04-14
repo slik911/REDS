@@ -27,14 +27,24 @@ class QuotationController extends Controller
         return view('admin.quotation.index', compact('quotations'));
     }
 
-    public function create($client_id = null, $rfq_number = null){
+    public function create($client_id = null, $rfq_id = null){
+        if ($client_id && $rfq_id) {
+            $client = Client::where('uuid', $client_id)->first();
+            $rfq = RFQ::where('uuid', $rfq_id)->first();
+        } else {
+            $client = null;
+            $rfq = null;
+        }
 
         $rfqs = RFQ::select('uuid', 'rfq_number')->get();
         $clients = Client::select('uuid', 'first_name', 'last_name')->get();
         $services = ServiceList::select('uuid', 'name')->get();
+        $tax = Tax::first();
+        $tax_rate = $tax ? $tax->rate : 0; 
         $quotation_number = Functions::generateRandomString("QTN");
 
-        return view('admin.quotation.create', compact('rfqs', 'rfq_number', 'clients', 'client_id', 'services', 'quotation_number'));
+
+        return view('admin.quotation.create', compact('rfqs', 'rfq', 'clients', 'client', 'services', 'quotation_number', 'tax_rate'));
     }
 
     public function getClientInfo(Request $request){
@@ -165,6 +175,30 @@ class QuotationController extends Controller
         $quotation = Quotation::with('rfq', 'client', 'user', 'service')->where('uuid', $quote_id)->first();
        
         return view('admin.quotation.preview', compact('quotation'));
+    }
+
+    public function cancel(Request $request){
+        if($quotation = Quotation::where('uuid', $request->quote_id)->first()){
+            $quotation->is_cancelled = true;
+            $quotation->cancelled_reason = $request->reason;
+            $quotation->save();
+            notyf()->success('Quotation cancelled successfully.');
+        }
+        else{
+            notyf()->error('Quotation not found.');
+        }
+        return redirect()->back();
+    }
+
+    public function delete(Request $request){
+        if($quotation = Quotation::where('uuid', $request->uuid)->first()){
+            $quotation->delete();
+            notyf()->success('Quotation deleted successfully.');
+        }
+        else{
+            notyf()->error('Quotation not found.');
+        }
+        return redirect()->back();
     }
 
 }

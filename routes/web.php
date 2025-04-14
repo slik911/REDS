@@ -18,7 +18,8 @@ Route::get('/quote', [App\Http\Controllers\WebController::class, 'quote'])->name
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => ['auth', 'SessionTimeoutMiddleware']], function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('admin.profile');
 
@@ -83,12 +84,25 @@ Route::delete('rentals/delete', [App\Http\Controllers\RentalController::class, '
 
 
 Route::get('quotations', [App\Http\Controllers\QuotationController::class, 'index'])->name('admin.quotation');
-Route::get('quotations/create', [App\Http\Controllers\QuotationController::class, 'create'])->name('admin.quotation.create');
+Route::get('quotations/create/{client_id?}/{rfq_id?}', [App\Http\Controllers\QuotationController::class, 'create'])->name('admin.quotation.create');
 Route::post('quotations/create', [App\Http\Controllers\QuotationController::class, 'store'])->name('admin.quotation.store');
 Route::get('/client/info', [App\Http\Controllers\QuotationController::class, 'getClientInfo'])->name('admin.quotation.client.info.get');
 Route::post('quotations/create', [App\Http\Controllers\QuotationController::class, 'store'])->name('admin.quotation.store');
 Route::get('quotations/change/status/{status}/{quote_id}', [App\Http\Controllers\QuotationController::class, 'changeStatus'])->name('admin.quotation.change.status'); 
 Route::get('quotations/send/mail/{quote_id}',  [App\Http\Controllers\QuotationController::class, 'sendMail'])->name('admin.quotation.send');
 Route::get('quotations/preview/{quote_id}',  [App\Http\Controllers\QuotationController::class, 'preview'])->name('admin.quotation.preview');
+Route::post('quotations/cancel', [App\Http\Controllers\QuotationController::class, 'cancel'])->name('admin.quotation.cancel');
+Route::delete('quotations/delete', [App\Http\Controllers\QuotationController::class, 'delete'])->name('admin.quotation.delete');
+
+Route::get('testimonial', [App\Http\Controllers\TestimonialController::class, 'index'])->name('admin.testimonial');
+Route::get('testimonial/create', [App\Http\Controllers\TestimonialController::class, 'create'])->name('admin.testimonial.create');
+Route::post('testimonial/create', [App\Http\Controllers\TestimonialController::class, 'store'])->name('admin.testimonial.store');
+Route::get('testimonial/edit/{uuid}', [App\Http\Controllers\TestimonialController::class, 'edit'])->name('admin.testimonial.edit');
+Route::put('testimonial/edit', [App\Http\Controllers\TestimonialController::class, 'update'])->name('admin.testimonial.update');
+Route::delete('testimonial/delete', [App\Http\Controllers\TestimonialController::class, 'delete'])->name('admin.testimonial.delete');
+Route::get('/testimonial/status/update/{uuid}', [App\Http\Controllers\TestimonialController::class, 'updateStatus'])->name('admin.testimonial.status');
+Route::get('/testimonial/preview/{uuid}', [App\Http\Controllers\TestimonialController::class, 'preview'])->name('admin.testimonial.preview');
+
 
 Route::get('/mail', [App\Http\Controllers\QuotationController::class, 'quote'])->name('admin.quotation.view');
+});

@@ -14,15 +14,30 @@ $(document).ready(function () {
         let total = unitPrice * quantity;
 
         row.find('.total').val(total.toFixed(2)); // Update total with 2 decimal places
+
+        calculateGrandTotal(); // Recalculate grand total after each input change
     }
 
-    // Function to update row numbers and trix-editor IDs
-    // function updateRowNumbers() {
-    //     $('.feature-row').each(function (index) {
-    //         let rowNumber = index + 1;
-    //         $(this).find('.row-number').text(rowNumber);
-    //     });
-    // }
+    function calculateGrandTotal() {
+        let subtotal = 0;
+
+        // Loop through all row totals
+        $('.total').each(function() {
+            subtotal += parseFloat($(this).val()) || 0;
+        });
+
+        // Get tax rate dynamically from the HTML
+        let taxRate = parseFloat($("#tax-rate").data("rate")) || 0; // Extract numeric value
+        let gst = subtotal * (taxRate / 100); // Convert to decimal
+        let grandTotal = subtotal + gst;
+
+        // Update the summary table
+        $("#subtotal").text(subtotal.toFixed(2));
+        $("#gst").text(gst.toFixed(2));
+        $("#grandTotal").text(grandTotal.toFixed(2))
+    }
+
+
 
     // Function to add a new row
     function addRow() {
@@ -135,20 +150,22 @@ $(document).ready(function () {
                         <label for="title" class="form-label">Client</label>
                         <select name="client_uuid" id="client_uuid" class="form-select" onchange="getClientInfo(this.value)">
                             <option value="">Select Client</option>
-                            @foreach ($clients as $client)
-                                <option value="{{$client->uuid}}">{{ $client->first_name }} {{ $client->last_name }}</option>
+                            @foreach ($clients as $clt)
+                                <option value="{{$clt->uuid}}" @if ($clt->uuid && $client && $clt->uuid == $client->uuid) selected @endif >
+                                {{ $clt->first_name }} {{ $clt->last_name }}
+                            </option>
                             @endforeach
                         </select>
                     </div>
                     <div class="row">
                         <div class="mb-3 col-md-4">
                             <label for="phone_number" class="form-label">Phone Number</label>
-                            <input type="text" class="form-control col-md-8" id="phone" name="phone_number" value="{{old('phone_number') }}" readonly  placeholder="Enter Phone Number">
+                            <input type="text" class="form-control col-md-8" id="phone" name="phone_number" value="{{ $client->phone_number ?? old('phone_number') }}" readonly  placeholder="Enter Phone Number">
                         </div>
         
                         <div class="mb-3 col-md-8">
                             <label for="exampleFormControlInput1" class="form-label">Email</label>
-                            <input type="text" class="form-control col-md-8" id="email" name="email" value="{{old('email') }}" readonly placeholder="Enter Email">
+                            <input type="text" class="form-control col-md-8" id="email" name="email" value="{{ $client->email ?? old('email') }}" readonly placeholder="Enter Email">
                         </div>
                     </div>
                     
@@ -159,8 +176,8 @@ $(document).ready(function () {
                             <label for="title" class="form-label">REFERENCE NUMBER</label>
                             <select name="rfq_id" id="rfq_id" class="form-select">
                                 <option value="">Select RFQ</option>
-                                @foreach ($rfqs as $rfq)
-                                    <option value="{{ $rfq->uuid }}" {{ $rfq_number == $rfq->rfq_number ? 'selected' : '' }}>{{ $rfq->rfq_number }}</option>
+                                @foreach ($rfqs as $rq)
+                                    <option value="{{ $rq->uuid }}" {{ $rq->uuid && $rfq && $rq->uuid == $rfq->uuid ? 'selected' : '' }}>{{ $rq->rfq_number }}</option>
                                 @endforeach
                             </select>
                             <small class="text-danger">Not required</small>
@@ -197,7 +214,7 @@ $(document).ready(function () {
                                 <td class="row-number">1</td> <!-- Row Number -->
                                 <td>
                                     <select name="services[]" class="form-select" required>
-                                        <option value="">select Service</option>
+                                        <option value="">Select Service</option>
                                         @foreach ($services as $service)
                                             <option value="{{ $service->uuid }}">{{ $service->name }}</option>
                                         @endforeach
@@ -231,7 +248,20 @@ $(document).ready(function () {
                 </div>
             </div>
   
-            
+            <table class="table table-bordered">
+                <tr>
+                    <td colspan="5" class="text-end"><strong>Subtotal:</strong></td>
+                    <td>$<span id="subtotal">0.00</span></td>
+                </tr>
+                <tr>
+                    <td colspan="5" class="text-end"><strong>GST (<span id="tax-rate" data-rate="{{$tax_rate}}">{{$tax_rate}}</span>%):</strong></td>
+                    <td >$<span id="gst">0.00</span></td>
+                </tr>
+                <tr>
+                    <td colspan="5" class="text-end"><strong>Total:</strong></td>
+                    <td><strong>$<span id="grandTotal">0.00</span></strong></td>
+                </tr>
+            </table>
 
         </div>
     </div>

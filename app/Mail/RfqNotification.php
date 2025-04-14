@@ -5,12 +5,11 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class QuoteMail extends Mailable
+class RfqNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -22,6 +21,7 @@ class QuoteMail extends Mailable
     {
         $this->mailData = $mailData;
     }
+
 
     /**
      * Get the message envelope.
@@ -39,13 +39,13 @@ class QuoteMail extends Mailable
      */
     public function content(): Content
     {
-    
         return new Content(
-            markdown:'emails.quote',
+            markdown: 'emails.RfqNotificationMail',
             with: $this->mailData
         );
     }
 
+    
     /**
      * Get the attachments for the message.
      *
@@ -53,21 +53,6 @@ class QuoteMail extends Mailable
      */
     public function attachments(): array
     {
-        $attachments = [];
-
-        foreach ($this->mailData['attachments'] as $attachment) {
-            if (isset($attachment['content'])) {
-                // Attach PDF from memory
-                $attachments[] = Attachment::fromData(fn () => $attachment['content'], $attachment['name'])
-                    ->withMime($attachment['mime']);
-            } elseif (isset($attachment['path']) && file_exists($attachment['path'])) {
-                // Attach file from path
-                $attachments[] = Attachment::fromPath($attachment['path'])
-                    ->as(basename($attachment['path']))
-                    ->withMime(mime_content_type($attachment['path']));
-            }
-        }
-
-        return $attachments;
+        return [];
     }
 }

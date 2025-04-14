@@ -14,7 +14,7 @@
        
             <div class="mb-3 col-md-12">
                 <label for="description" class="form-label">Description</label>
-                <textarea name="description" id="" class="form-control" cols="30" rows="10" oninput="limitWords(this, 30)"></textarea>
+                <textarea name="description" id="" class="form-control" cols="30" rows="10" oninput="limitWords(this, 30)"  onkeydown="limitWords(this, 30, event)"></textarea>
                 <small id="wordCount" class="text-muted">0/30 words</small>
             </div>
         </div>
@@ -39,13 +39,12 @@
             }
         }
 
-        function limitWords(textarea, maxWords) {
+        function limitWords(textarea, maxWords, event) {
             let words = textarea.value.match(/\b[-?(\w+)?]+\b/g) || []; // Match words
             let wordCount = words.length;
 
-            if (wordCount > maxWords) {
-                textarea.value = words.slice(0, maxWords).join(" "); // Trim words
-                wordCount = maxWords;
+            if (wordCount >= maxWords && event.key !== "Backspace" && event.key !== "Delete") {
+                event.preventDefault(); // Stop further input
             }
 
             document.getElementById("wordCount").textContent = `${wordCount}/${maxWords} words`;

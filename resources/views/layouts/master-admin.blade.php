@@ -6,6 +6,7 @@
 	<link rel="icon" href="{{asset('assets/FVClogo.png')}}">
 	{{-- @vite(['resources/css/app-admin.css', 'resources/js/app-admin.js', 'resources/js/datatables.js']) --}}
 	<link rel="stylesheet" href="{{asset('css/app-admin.css')}}">
+
 	<title>@yield('title')</title>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
@@ -65,6 +66,8 @@
 
 			/* transition: 0.3s; */
 		}
+
+
 
 	</style>
 	@yield('styles')
@@ -130,6 +133,8 @@
 		</div>
 	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+
 	<script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
 	<script src="{{asset('js/app-admin.js')}}"></script>
 	<script src="{{asset('js/datatables.min.js')}}"></script>
@@ -138,14 +143,6 @@
 			// Datatables with Buttons
 			var datatablesButtons = $(".data-table").DataTable({
 				responsive: true,
-				buttons: [
-					{
-						text: 'My button',
-						action: function (e, dt, node, config) {
-							alert('Button activated');
-						}
-					}
-				]
 			});
 		});
 	</script>
