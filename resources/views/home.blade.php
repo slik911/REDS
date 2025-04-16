@@ -1,7 +1,7 @@
 @extends('layouts.master-admin')
 
 @section('title')
-    Dashboard   
+    Dashboard
 @endsection
 @section('styles')
     <style>
@@ -45,8 +45,8 @@
                                 <i class="align-middle mt-n6" data-feather="user"></i>
                             </div>
                         </div>
-                    </div> 
-                </a>       
+                    </div>
+                </a>
             </div>
         </div>
         <div class="col-md-3">
@@ -101,7 +101,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="row mt-4">
         <div class="col-md-6">
             <div class="card">
@@ -125,7 +125,7 @@
                                 <tr>
                                     <th scope="row">{{$n++}}</th>
                                     <td>{{$quote->created_at->format('M-d-Y')}}</td>
-                              
+
                                     <td><a href="{{route('admin.quotation.preview', ['quote_id'=>$quote->uuid])}}" style="text-decoration: none; ">{{$quote->client->first_name}} {{$quote->client->last_name}} </a> </td>
                                     <td><span class="badge bg-success">{{$quote->status}}</span></td>
                                     <td> <a href="{{route('admin.quotation.send', ['quote_id'=>$quote->uuid])}}" class="btn btn-success btn-sm">
@@ -138,7 +138,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header " style="font-weight: bold">Pending Requests</div>
@@ -160,8 +160,8 @@
                         @foreach ($pendingRfq as $rfq)
                             <tr>
                                 <td>{{$rfq->created_at->format('M-d-Y')}}</td>
-                          
-                                <td><a href="{{route('admin.quotation.preview', ['quote_id'=>$rfq->uuid])}}" style="text-decoration: none; ">{{$rfq->client->first_name}} {{$rfq->client->last_name}} </a> </td>
+
+                                <td>{{$rfq->client->first_name}} {{$rfq->client->last_name}} </td>
 
                                 <td> <a href="{{route('admin.rfq.preview', ['uuid'=>$rfq->uuid])}}" class="btn btn-primary btn-sm"> <i class="align-middle" data-feather="eye"></i> Preview</a></td>
                                 <td><a href="{{route('admin.quotation', ['uuid'=>$rfq->uuid])}}" class="btn btn-success btn-sm"> <i class="align-middle" data-feather="file"></i> Generate Quote</a></td>
@@ -173,7 +173,7 @@
                 </div>
             </div>
         </div>
-{{-- 
+{{--
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">RFQ Conversion Rate</div>
@@ -225,5 +225,5 @@
         });
     });
 </script>
-    
+
 @endsection

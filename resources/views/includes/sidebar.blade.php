@@ -1,6 +1,6 @@
 <nav id="sidebar" class="sidebar js-sidebar">
     <div class="sidebar-content js-simplebar">
-        <a class="sidebar-brand" href="index.html">
+        <a class="sidebar-brand" href="/">
             <span class="align-middle">First Vision</span>
         </a>
 
@@ -67,7 +67,7 @@
             </li>
 
 
-            
+
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('admin.testimonial') }}">
                     <i class="align-middle" data-feather="message-circle"></i> <span class="align-middle">Testimonials</span>
@@ -75,7 +75,7 @@
             </li>
 
 
-            
+
 
         </ul>
     </div>
