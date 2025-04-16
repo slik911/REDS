@@ -13,7 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'AdminMiddleware'=>\App\Http\Middleware\AdminMiddleware::class,
-            'SessionTimeoutMiddleware'=> \App\Http\Middleware\SessionTimeoutMiddleware::class
+            // 'SessionTimeoutMiddleware'=> \App\Http\Middleware\SessionTimeoutMiddleware::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
