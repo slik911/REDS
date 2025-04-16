@@ -11,7 +11,7 @@ use App\Models\Rental;
 use App\Models\Upload;
 use App\Validations\RentalValidation;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;  
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
@@ -28,7 +28,7 @@ class RentalController extends Controller
     }
 
     public function store(Request $request, RentalValidation $rule){
-        
+
         //merge features and feature_descriptions
         $merged_features = array_combine($request->features, $request->feature_descriptions);
 
@@ -38,10 +38,17 @@ class RentalController extends Controller
             notyf()->error($validated->errors()->first());
             return redirect()->back()->withInput($request->all());
         }
-        
+
         try {
 
-           
+           //make sure category rentals  category exists
+            if(!Category::where('name', 'rentals')->exists()) {
+                Category::create([
+                    'uuid'=> Str::uuid(),
+                    'name' => 'rentals',
+                    'slug' => Str::slug('rentals', '_'),
+                ]);
+            }
 
             DB::beginTransaction();
             $post = Post::create([
@@ -82,7 +89,7 @@ class RentalController extends Controller
             notyf()->error('An error occurred while creating the rentals');
             return redirect()->back()->withInput($request->all());
         }
-        
+
     }
 
     public function updateStatus($post_id){
@@ -99,7 +106,7 @@ class RentalController extends Controller
 
         return view('admin.rentals.edit', compact('post'));
     }
-    
+
     public function update(Request $request, RentalValidation $rule){
         $validated = $rule->validationRules($request, 'update');
 
@@ -107,7 +114,7 @@ class RentalController extends Controller
             notyf()->error($validated->errors()->first());
             return redirect()->back();
         }
-        
+
         try {
             DB::beginTransaction();
 
@@ -158,7 +165,7 @@ class RentalController extends Controller
             notyf()->error('An error occurred while updating post');
             return redirect()->back();
         }
-        
+
     }
 
     public function delete(Request $request){

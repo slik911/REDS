@@ -13,8 +13,15 @@ Route::get('/rental', [App\Http\Controllers\WebController::class, 'rental'])->na
 Route::get('rental/preview/{uuid}', [App\Http\Controllers\WebController::class, 'rentalPreview'])->name('rental.preview');
 Route::get('/renovations', [App\Http\Controllers\WebController::class, 'reno'])->name('reno');
 Route::get('/project', [App\Http\Controllers\WebController::class, 'project'])->name('project');
+Route::get('project/preview/{uuid}', [App\Http\Controllers\WebController::class, 'projectPreview'])->name('project.preview');
 Route::get('/contact', [App\Http\Controllers\WebController::class, 'contact'])->name('contact');
+Route::post('/contact', [App\Http\Controllers\WebController::class, 'contactMail'])->name('contact.mail');
 Route::get('/quote', [App\Http\Controllers\WebController::class, 'quote'])->name('quote');
+Route::get('/faq', [App\Http\Controllers\WebController::class, 'faq'])->name('faq');
+Route::get('/privacy', [App\Http\Controllers\WebController::class, 'privacy'])->name('privacy');
+Route::get('/terms', [App\Http\Controllers\WebController::class, 'terms'])->name('terms');
+Route::get('/feedback/{uuid}', [App\Http\Controllers\WebController::class, 'testimonial'])->name('feedback.show');
+Route::post('/feedback', [App\Http\Controllers\WebController::class, 'storeTestimonial'])->name('feedback.store');
 
 Auth::routes();
 
@@ -88,7 +95,7 @@ Route::get('quotations/create/{client_id?}/{rfq_id?}', [App\Http\Controllers\Quo
 Route::post('quotations/create', [App\Http\Controllers\QuotationController::class, 'store'])->name('admin.quotation.store');
 Route::get('/client/info', [App\Http\Controllers\QuotationController::class, 'getClientInfo'])->name('admin.quotation.client.info.get');
 Route::post('quotations/create', [App\Http\Controllers\QuotationController::class, 'store'])->name('admin.quotation.store');
-Route::get('quotations/change/status/{status}/{quote_id}', [App\Http\Controllers\QuotationController::class, 'changeStatus'])->name('admin.quotation.change.status'); 
+Route::get('quotations/change/status/{status}/{quote_id}', [App\Http\Controllers\QuotationController::class, 'changeStatus'])->name('admin.quotation.change.status');
 Route::get('quotations/send/mail/{quote_id}',  [App\Http\Controllers\QuotationController::class, 'sendMail'])->name('admin.quotation.send');
 Route::get('quotations/preview/{quote_id}',  [App\Http\Controllers\QuotationController::class, 'preview'])->name('admin.quotation.preview');
 Route::post('quotations/cancel', [App\Http\Controllers\QuotationController::class, 'cancel'])->name('admin.quotation.cancel');

@@ -153,15 +153,15 @@
                                 <i class="align-middle" data-feather="user"></i>
 							</a>
 
-                
+
 							<div class="dropdown-menu dropdown-menu-end">
 								<a class='dropdown-item' href='{{route('admin.profile')}}'><i class="align-middle me-1" data-feather="user"></i> Profile</a>
 
 								<div class="dropdown-divider"></div>
-								<a class='dropdown-item' href='/pages-settings'><i class="align-middle me-1" data-feather="settings"></i> Settings &
+								{{-- <a class='dropdown-item' href='/pages-settings'><i class="align-middle me-1" data-feather="settings"></i> Settings &
 									Privacy</a>
-								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
-								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a> --}}
+								{{-- <div class="dropdown-divider"></div> --}}
 								<a class="dropdown-item" href="#"  onclick="event.preventDefault();document.getElementById('logout-form').submit();">Log out</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf

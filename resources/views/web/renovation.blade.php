@@ -37,11 +37,13 @@
             <div class="row">
                 @foreach ($services as $service)
                     <div class="col-md-3 card mt-5" style="border:none">
-                        <img class="card-img-top img-fluid"  src="{{$service->image->url}}" style="height:250px; object-fit:cover; border-radius:0"  alt="testimony1">
-                        <div class="card-body" style="border:1px solid #ccc">
-                        <h5 class="card-title" style="font-weight: bold;">{{$service->name}}</h5>
-                        <p class="card-text">{{$service->description}}</p>
-                        </div>
+                        <a href="{{route('quote')}}" style="text-decoration: none; color:#000 ">
+                            <img class="card-img-top img-fluid"  src="{{$service->image->url}}" style="height:250px; object-fit:cover; border-radius:0"  alt="testimony1">
+                            <div class="card-body" style="border:1px solid #ccc">
+                            <h5 class="card-title" style="font-weight: bold;">{{$service->name}}</h5>
+                            <p class="card-text">{{$service->description}}</p>
+                            </div>
+                        </a>
                     </div>
                 @endforeach
                 <div class="col-12 mt-5">
@@ -51,7 +53,6 @@
 
         </div>
       </div>
-        
+
 @endsection
 
-  

@@ -37,12 +37,12 @@ class TestimonialController extends Controller
             $testimonial->save();
             DB::commit();
 
-            notyf()->success('Testimonial created successfully!');
+            notyf()->success('Testimonial submitted successfully!');
             return redirect()->route('admin.testimonial');
        } catch (\Throwable $th) {
         //throw $th
             DB::rollBack();
-            notyf()->error('Testimonial creation failed!');
+            notyf()->error('Testimonial submission failed!');
             return redirect()->back()->withInput($request->all());
        }
     }
@@ -63,7 +63,7 @@ class TestimonialController extends Controller
 
     public function preview($uuid){
         $testimonial = Testimonial::where('uuid', $uuid)->first();
-    
+
         if ($testimonial) {
             return view('admin.testimonials.preview', compact('testimonial'));
         } else {

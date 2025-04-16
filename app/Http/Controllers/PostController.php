@@ -27,16 +27,27 @@ class PostController extends Controller
     }
 
     public function store(Request $request, PostValidation $rule){
+
         $validated = $rule->validationRules($request, 'create');
 
         if ($validated->fails()) {
             notyf()->error($validated->errors()->first());
             return redirect()->back()->withInput($request->all());
         }
-        
+
         try {
 
             DB::beginTransaction();
+
+            //make sure category renovations  category e
+            if(!Category::where('name', 'renovations')->exists()) {
+                Category::create([
+                    'uuid'=> Str::uuid(),
+                    'name' => 'renovations',
+                    'slug' => Str::slug('renovations', '_'),
+                ]);
+            }
+
             $post = Post::create([
                 'user_id'=> Auth::user()->uuid,
                 'category_id' => Category::where('name', 'renovations')->first()->uuid,
@@ -66,8 +77,8 @@ class PostController extends Controller
             notyf()->error('An error occurred while creating post');
             return redirect()->back();
         }
-    }  
-    
+    }
+
     public function updateStatus($post_id){
         $post = Post::where('uuid', $post_id)->first();
         $post->status = !$post->status;
@@ -79,7 +90,7 @@ class PostController extends Controller
 
     public function edit($post_id){
         $post = Post::with('uploads')->where('uuid', $post_id)->first();
-       
+
         return view('admin.renovation.edit', compact('post'));
     }
 
@@ -103,8 +114,8 @@ class PostController extends Controller
             //delete image from cloudinary
             $function = new Functions();
             $result = $function->deleteImageByUrl($url);
-            
-           
+
+
             if ($result) {
                 DB::commit();
                 return response()->json(['success' => true, 'message' => 'Image deleted successfully']);
@@ -123,7 +134,7 @@ class PostController extends Controller
             notyf()->error($validated->errors()->first());
             return redirect()->back();
         }
-        
+
         try {
             DB::beginTransaction();
 
@@ -131,7 +142,7 @@ class PostController extends Controller
                 notyf()->error('Upload at least one image');
                 return redirect()->back();
             }
-            
+
             $post = Post::where('uuid', $request->post_id)->first();
             $post->title = $request->title;
             $post->slug = Str::slug($request->title, '_');
@@ -163,7 +174,7 @@ class PostController extends Controller
             notyf()->error('An error occurred while updating post');
             return redirect()->back();
         }
-        
+
     }
 
     public function delete(Request $request){

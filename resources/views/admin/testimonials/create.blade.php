@@ -3,10 +3,10 @@
     Create Testimonial
 @endsection
 @section('content')
-   <form action="{{route('admin.testimonial.store')}}" method="post" enctype="multipart/form-data">
+   <form action="{{route('admin.testimonial.store')}}" method="post">
     @csrf
     <div class="row">
-            
+
             <div class="mb-3 col-md-6">
                 <label for="client_id" class="form-label">Choose Client</label>
                 <select name="client_id" id="client_id" class="form-select">
@@ -16,7 +16,7 @@
                     @endforeach
                 </select>
             </div>
-            
+
     </div>
 
     <div class="row">
@@ -43,5 +43,5 @@
             document.getElementById("wordCount").textContent = `${wordCount}/${maxWords} words`;
         }
    </script>
-    
+
 @endsection

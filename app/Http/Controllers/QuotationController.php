@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\Functions;
 use App\Http\Controllers\Controller;
 use App\Mail\QuoteMail;
+use App\Mail\TestimonialRequest;
 use App\Models\Client;
 use App\Models\Quotation;
 use App\Models\RFQ;
@@ -40,7 +41,7 @@ class QuotationController extends Controller
         $clients = Client::select('uuid', 'first_name', 'last_name')->get();
         $services = ServiceList::select('uuid', 'name')->get();
         $tax = Tax::first();
-        $tax_rate = $tax ? $tax->rate : 0; 
+        $tax_rate = $tax ? $tax->rate : 0;
         $quotation_number = Functions::generateRandomString("QTN");
 
 
@@ -50,7 +51,7 @@ class QuotationController extends Controller
     public function getClientInfo(Request $request){
 
         $client = Client::with('rfq')->where('uuid', $request->uuid)->first();
-        
+
         return response()->json($client);
     }
 
@@ -70,7 +71,7 @@ class QuotationController extends Controller
             foreach ($request->total as $key => $value) {
                 $total += $value;
             }
-            
+
 
             $quotation = Quotation::create([
                 'client_id' => $request->client_uuid,
@@ -104,7 +105,7 @@ class QuotationController extends Controller
             notyf()->error('An error occurred while creating quotation.');
             return redirect()->back()->withInput($request->all());
         }
-       
+
     }
 
 
@@ -113,6 +114,16 @@ class QuotationController extends Controller
         $quotation = Quotation::where('uuid', $quote_id)->first();
         $quotation->status = $status;
         $quotation->save();
+
+        if ($status == 'completed') {
+            $mailData = [
+                "uuid" => $quotation->client_id,
+
+                "name" => $quotation->client->first_name,
+            ];
+            $email = $quotation->client->email;
+            Mail::to($email)->send(new TestimonialRequest($mailData));
+        }
 
         notyf()->success('Quotation status updated successfully.');
         return redirect()->back();
@@ -138,12 +149,12 @@ class QuotationController extends Controller
                     ]
                 ]
             ];
-            
+
             $email = $quotation->client->email;
-            
-          
+
+
             Mail::to($email)->send(new QuoteMail($mailData));
-            
+
 
             $quotation->status = "sent";
             $quotation->save();
@@ -153,8 +164,8 @@ class QuotationController extends Controller
                     'is_quotation_sent'=>true
                 ]);
             }
-        
-            
+
+
             notyf()->success('Email is sent Successfully');
             return redirect()->back();
 
@@ -163,7 +174,7 @@ class QuotationController extends Controller
            notyf()->error('Error Occured while trying to send mail');
            return redirect()->back();
         }
-        
+
     }
 
     public function quote(){
@@ -173,7 +184,7 @@ class QuotationController extends Controller
 
     public function preview($quote_id){
         $quotation = Quotation::with('rfq', 'client', 'user', 'service')->where('uuid', $quote_id)->first();
-       
+
         return view('admin.quotation.preview', compact('quotation'));
     }
 

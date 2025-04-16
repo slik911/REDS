@@ -46,7 +46,7 @@ class RFQController extends Controller
             else{
                 $client = $client->first();
             }
-    
+
             $rfq = new RFQ();
             $rfq->client_id = $client->uuid;
             $rfq->RFQ_number = Functions::generateRandomString("RFQ");
@@ -63,11 +63,11 @@ class RFQController extends Controller
                 'name' => 'First Vision Contracting',
                 'body' => 'A new request for quote has just been submitted on your platform. Please log in to the admin dashboard to review the details.',
             ];
-            
-            
-            $email = "odinaka466@gmail.com";
-            
-          
+
+
+            $email = "firstvisionconsulting@gmail.com";
+
+
             Mail::to($email)->send(new RfqNotification($mailData));
 
             notyf()->success("Submission successful. We'll get back to you as soon as possible.");
@@ -79,7 +79,7 @@ class RFQController extends Controller
             notyf()->error("An error occurred while submitting request");
             return redirect()->back();
         }
-        
+
     }
 
     public function preview($uuid)

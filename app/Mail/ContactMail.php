@@ -8,8 +8,9 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Address;
 
-class TestimonialRequest extends Mailable
+class ContactMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -22,14 +23,17 @@ class TestimonialRequest extends Mailable
         $this->mailData = $mailData;
     }
 
-
     /**
      * Get the message envelope.
      */
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Testimonial Request',
+            from: new Address('noreply@firstvisioncontracting.com', 'First Vision Contracting'),
+            replyTo: [
+                new Address($this->mailData['email'], $this->mailData['name']),
+            ],
+            subject: 'New Contact Form Submission',
         );
     }
 
@@ -39,8 +43,8 @@ class TestimonialRequest extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'emails.TestimonialRequestMail',
-            with: $this->mailData
+            markdown: 'emails.ContactMail',
+            with: $this->mailData,  
         );
     }
 

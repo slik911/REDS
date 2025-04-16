@@ -20,7 +20,7 @@
 
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-label="Expand Navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button>      
+            </button>
 
             <div class="collapse navbar-collapse justify-content-center" id="navbar">
                 <ul class="navbar-nav">
@@ -53,7 +53,7 @@
     </nav>
 
     @yield('content')
-    
+
     {{-- <!--Footer-->
     <footer class="footer-section">
         <div class="footer-top">
@@ -127,7 +127,7 @@
                 </div>
             </div><!-- widget end -->
             </div>
-        </div> 
+        </div>
         </div>
         <div class="footer-slogan">
             <div class="container">
@@ -161,9 +161,9 @@
                     <div class="">
                         <h6 class="footer-heading text-uppercase text-white">Resources</h6>
                         <ul class="list-unstyled footer-link mt-4">
-                            <li><a href="">Privacy Policy</a></li>
-                            <li><a href="">FAQ </a></li>
-                            <li><a href="">Terms & Conditions</a></li>
+                            <li><a href="{{route('privacy')}}">Privacy Policy</a></li>
+                            <li><a href="{{route('faq')}}">FAQ </a></li>
+                            <li><a href="{{route('terms')}}">Terms & Conditions</a></li>
                         </ul>
                     </div>
                 </div>
@@ -172,9 +172,9 @@
                     <div class="">
                         <h6 class="footer-heading text-uppercase text-white">Quick Links</h6>
                         <ul class="list-unstyled footer-link mt-4">
-                            <li><a href="">About Us</a></li>
-                            <li><a href="">Projects</a></li>
-                            <li><a href="">Contact</a></li>
+                            <li><a href="{{route('about')}}">About Us</a></li>
+                            <li><a href="{{route('project')}}">Projects</a></li>
+                            <li><a href="{{route('contact')}}">Contact</a></li>
                         </ul>
                     </div>
                 </div>
