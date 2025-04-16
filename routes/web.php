@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\SessionTimeOutMiddleware;
+use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,7 +27,7 @@ Route::post('/feedback', [App\Http\Controllers\WebController::class, 'storeTesti
 
 Auth::routes();
 
-Route::group(['middleware' => ['auth', 'SessionTimeoutMiddleware']], function () {
+Route::middleware([SessionTimeOutMiddleware::class, Authenticate::class])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('admin.profile');
