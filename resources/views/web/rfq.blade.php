@@ -1,16 +1,16 @@
 @extends('layouts.master-web')
 @section('content')
-  
+
     <!--Carousel-->
     <div class="carousel-item active c-item">
         <img src="./assets/Frame 3.png" class="d-block w-100 c-img" alt="carousel1">
         <div class="carousel-caption cbanner-caption">
             <h1>GET A QUOTE FOR YOUR PROJECT</h1>
-    
+
             <nav class="breadcrumb-nav" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/" class="text-white">Home</a></li>
-                <li class="breadcrumb-item active text-white" aria-current="page">About</li>
+                <li class="breadcrumb-item active text-white" aria-current="page">Qoute</li>
                 </ol>
             </nav>
         </div>
@@ -98,6 +98,6 @@
         </form>
             </div>
         </div>
-    </div>  
+    </div>
    </section>
 @endsection
