@@ -54,7 +54,8 @@ class LoginController extends Controller
 
         // Fetch the password record from the `passwords_table`
         $passwordRecord = DB::table('credentials')
-            ->where('user_id', $user->uuid) // Assuming both tables share a common ID
+            ->where('user_id', $user->uuid)
+            ->where('status', true) // Assuming both tables share a common ID
             ->first();
 
         return [

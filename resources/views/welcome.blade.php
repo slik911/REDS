@@ -95,45 +95,31 @@
 
 
     <!--Carousel-->
-    <div id="" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active c-item">
-            <img src="{{asset('assets/Frame 3.png')}}" class="d-block w-100 c-img img-fluid" alt="carousel1">
-            <div class="carousel-caption c-caption">
-                <h1 class="display-2">From First Vision To<br>Final Detail</h1>
-                <p>
-                    Bringing innovative designs and expert craftsmanship to every renovation. Whether it's a <br>
-                    modern upgrade or a timeless transformation, we turn your vision<br> into reality—one space at a time.
-                </p>
-                    <a href="{{route('quote')}}" class="btn" role="button">Get Quote</a>
-              </div>
-          </div>
-          <div class="carousel-item c-item">
-            <img src="{{asset('assets/Frame 18.png')}}" class="d-block w-100 c-img" alt="carousel2">
-            <div class="carousel-caption c-caption">
-                <h1>From First Vision To<br>Final Detail</h1>
-                <p>
-                    Bringing innovative designs and expert craftsmanship to every renovation. Whether it's a <br>
-                    modern upgrade or a timeless transformation, we turn your vision<br> into reality—one space at a time.
-                </p>
-                <a href="{{route('quote')}}" class="btn" role="button">Get Quote</a>
-            </div>
-          </div>
-          <div class="carousel-item c-item">
-            <img src="{{asset('assets/Frame 26.png')}}" class="d-block w-100 c-img" alt="carousel3">
-            <div class="carousel-caption c-caption">
-                <h1>From First Vision To<br>Final Detail</h1>
-                <p>
-                    Bringing innovative designs and expert craftsmanship to every renovation. Whether it's a <br>
-                    modern upgrade or a timeless transformation, we turn your vision<br> into reality—one space at a time.
-                </p>
-                <a href="{{route('quote')}}" class="btn" role="button">Get Quote</a>
-            </div>
-          </div>
-        </div>
-        <span type="button" data-bs-target="#home-carousel" data-bs-slide="prev"></span>
-        <span  type="button" data-bs-target="#home-carousel" data-bs-slide="next"></span>
+<div id="home-carousel" class="carousel slide carousel-slide" data-bs-touch="true" data-bs-ride="carousel" data-bs-interval="2000">
+  <div class="carousel-inner">
+    <div class="carousel-item active c-item">
+      <img src="{{asset('assets/frame3.jpg')}}" class="d-block w-100 c-img img-fluid" alt="carousel1">
+      <div class="carousel-caption c-caption">
+        <h1 class="display-4">From First Vision To Final Detail</h1>
+        <p>
+          Bringing innovative designs and expert craftsmanship to every renovation. Whether it's a <br>
+          modern upgrade or a timeless transformation, we turn your vision<br> into reality—one space at a time.
+        </p>
+        <a href="{{route('quote')}}" class="btn" role="button">Get Quote</a>
+      </div>
     </div>
+    <div class="carousel-item c-item">
+      <img src="{{asset('assets/rental2.jpg')}}" class="d-block w-100 c-img" alt="carousel2">
+      <div class="carousel-caption c-caption">
+        <h1 class="display-4">Find Your Perfect Space, Tailored to You </h1>
+        <p>
+            Discover curated room listings designed for modern living. From cozy studios to spacious shared units,<br> we connect tenants to quality rentals and help landlords maximize property value. <br>Your ideal space is just a click away.≈
+        </p>
+        <a href="{{route('rental')}}" class="btn" role="button">Check out Listings</a>
+      </div>
+    </div>
+    </div>
+
 
 
     <!--Who we are?-->
@@ -143,7 +129,7 @@
                 <div class="row g-0">
                 <div class="col-md-6">
                     <div class="card-body">
-                    <p><h1 class="display-4 mt-md-5">WHO WE ARE</h1></p>
+                    <p><h1 class="display-5 mt-md-5">WHO WE ARE</h1></p>
                     <p class="card-text">
                         We transform homes and rental properties into extraordinary spaces through expert renovations.
                         Guided by “From First Vision to Final Detail,” we specialize in painting, drywalling, basement development,
@@ -167,7 +153,7 @@
     <!--Recent Projects-->
     <section class="recent-projects p-4">
         <div class="container mb-3 text-align center">
-            <p><h1 style="text-align: center;">Recent Projects</h1></p>
+            <p><h1 style="text-align: center;" class="display-5">Recent Projects</h1></p>
             <p style="text-align: center;">
                 Transformations That Speak for Themselves<br>
                 Explore our latest projects where vision meets precision. From sleek basement developments
@@ -212,21 +198,18 @@
     <!--Services-->
     <section class="services p-3">
         <div class="container mb-3 text-align center">
-            <p><h1 style="text-align: center;">Services</h1></p>
+            <p><h1 style="text-align: center;"  class="display-5">Services</h1></p>
             <p style="text-align: center;">
-                Your Vision, Our Expertise<br>
-                Whether refreshing a single room or overhauling your entire property, we deliver:
-                <b>Renovations:</b> Painting, drywalling, basement development, and tiling tailored to your style.
-                <b>Rentals:</b> Hassle-free room listings in prime locations, perfect for tenants and property investors.
+                At First Vision Contracting, we specialize in transforming spaces with precision and creativity. Our services include expert renovations, rental solutions, and property management, all tailored to meet your unique needs. Whether you're looking to enhance your home or maximize your rental property's potential, we're here to bring your vision to life.
             </p>
                <div class="row">
                 @foreach ($services as $service)
                 <div class="col-md-3 col-12 card mt-5" style="border:none">
                       <a href="{{route('quote')}}" style="text-decoration: none; color:#000 ">
                         <img class="card-img-top img-fluid"  src="{{$service->image->url}}" style="height:250px; object-fit:cover; border-radius:0"  alt="testimony1">
-                        <div class="card-body" style="border:1px solid #ccc">
-                        <h5 class="card-title" style="font-weight: bold;">{{$service->name}}</h5>
-                        <p class="card-text">{{$service->description}}</p>
+                        <div class="card-body" style="border:1px solid #ccc; border-top:none; border-radius:0px; background-color: #fff">
+                        <h5 class="card-title fs-6" style="font-weight: bold;">{{$service->name}}</h5>
+                        <p class="card-text" style="color:#3e3e3e">{{$service->description}}</p>
                         </div>
                     </a>
                 </div>
@@ -250,8 +233,8 @@
 
                         <a href="{{route('rental.preview', ['uuid'=>$rental->uuid])}}"><img class="card-img-top"  src="{{$rental->uploads[0]->url}}" style="height: 250px; border-radius:0px; object-fit:cover" alt="testimony1"></a>
                         <div class="card-body" style="background-color: #fff">
-                            <div class="card-title" style="font-weight:bold">
-                               <a href="{{route('rental.preview', ['uuid'=>$rental->uuid])}}"> {{substr($rental->title, 0 , 50)}}</a>
+                            <div class="card-title " style="font-weight:bold" >
+                               <a href="{{route('rental.preview', ['uuid'=>$rental->uuid])}}" > {{substr($rental->title, 0 , 50)}}</a>
                             </div>
                             <div class="card-text">
                                 <p style="font-size: 12px !important">

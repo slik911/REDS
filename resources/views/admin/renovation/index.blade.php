@@ -39,19 +39,19 @@
                         @if (Auth::user()->role->name == 'super-admin' || Auth::user()->role->name == 'admin')
                             @if ($post->status == 1)
                             <a href="{{route('admin.renovation.status.update', ["post_id"=>$post->uuid])}}" class="btn btn-warning btn-sm"> <i class="align-middle" data-feather="Check"></i>Disable</a>
-                                
+
                             @else
                             <a href="{{route('admin.renovation.status.update', ["post_id"=>$post->uuid])}}" class="btn btn-success btn-sm"> <i class="align-middle" data-feather="Check"></i>Enable</a>
                             @endif
                         @endif
-                        <a href="{{route('admin.renovation.edit', ["post_id"=>$post->uuid])}}" class="btn btn-primary btn-sm"><i class="align-middle" data-feather="pencil"></i>Edit</a>
+                        <a href="{{route('admin.renovation.edit', ["post_id"=>$post->uuid])}}" class="btn btn-primary btn-sm"><i class="align-middle" data-feather="edit"></i>Edit</a>
                         {{-- <a href="{{route('admin.renovation.delete',  ["post_id"=>$post->uuid])}}" class="btn btn-danger btn-sm"><i class="align-middle" data-feather="trash-2"></i>Delete</a> --}}
-                        <a href="#" 
-                                onclick="event.preventDefault(); 
-                                        if (confirm('Are you sure you want to delete this?')) { 
+                        <a href="#"
+                                onclick="event.preventDefault();
+                                        if (confirm('Are you sure you want to delete this?')) {
                                             //dynamically parsing the current row id to the form
                                             document.getElementById('uuid').value = '{{$post->uuid}}';
-                                            document.getElementById('delete-renovation-form').submit();}" 
+                                            document.getElementById('delete-renovation-form').submit();}"
                                 class="btn btn-danger btn-sm">
                                  <i class="align-middle" data-feather="trash-2"></i> Delete
                              </a>

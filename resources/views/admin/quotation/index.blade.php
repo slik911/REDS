@@ -33,7 +33,7 @@
                     <th>Status</th>
                     <th>Email</th>
                     <th>Total</th>
-                  
+
                     <th></th>
                 </tr>
             </thead>
@@ -51,7 +51,7 @@
                             NO RFQ
                         @endif</td>
                         <td style="text-transform: capitalize">
-                            {{$quote->client->last_name}} {{$quote->client->first_name}}    
+                            {{$quote->client->last_name}} {{$quote->client->first_name}}
                         </td>
 
                         @php
@@ -62,13 +62,13 @@
                                 'in-progress' => 'bg-info',
                                 'completed' => 'bg-primary',
                                 'sent' => 'bg-success',
-                                
+
                                 default => 'bg-danger',
                             };
                         @endphp
                         <td>
                             <span class="badge {{$badgeClass}}"  style="text-transform: capitalize">
-                                @if ($quote->is_cancelled) 
+                                @if ($quote->is_cancelled)
                                     Cancelled
                                 @else
                                 {{$quote->status}}
@@ -76,13 +76,13 @@
                             </span>
                         </td>
                         <td style="text-transform: capitalize">
-                            {{$quote->client->email}}    
+                            {{$quote->client->email}}
                         </td>
                         <td style="text-transform: capitalize">
                             {{number_format($quote->total, 2)}}
                         </td>
-                        
-                       
+
+
 
                         <td>
                             <div class="d-flex align-items-center gap-2">
@@ -91,7 +91,7 @@
                                         Select Option
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                
+
                                         @if ($quote->status != 'draft')
                                         <li><a class="dropdown-item" href="{{route('admin.quotation.send', ['quote_id'=>$quote->uuid])}}">Re-Send Mail</a></li>
                                         @else
@@ -107,35 +107,36 @@
                                     <i class="align-middle" data-feather="file"></i> Preview
                                 </a>
                                 @if ($quote->status == 'draft')
-                                <a href="{{route('admin.quotation', ['uuid'=>$quote->uuid])}}" class="btn btn-success btn-sm">
-                                   Edit
-                                </a>
-                                 @endif
+                                    <a href="{{route('admin.quotation.edit', ['uuid'=>$quote->uuid])}}" class="btn btn-success btn-sm">  <i class="align-middle" data-feather="edit"></i>
+                                    Edit
+                                    </a>
+                                @endif
 
-                                
+
 
                                 @if ( (Auth::user()->role->name == "admin" || Auth::user()->role->name == "super-admin") && $quote->status != 'draft')
                                     @if ($quote->is_cancelled)
-                                    <a  class="btn btn-secondary btn-sm cancel-btn" type="button" class="btn btn-primary" disabled>
+                                    <a  class="btn btn-secondary btn-sm cancel-btn" type="button" class="btn btn-primary" disabled>  <i class="align-middle" data-feather="x"></i>
                                         Cancel Quotation
-                                    </a>    
+                                    </a>
                                     @else
                                     <a  class="btn btn-success btn-sm cancel-btn" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-uuid="{{ $quote->uuid }}" {{$quote->is_cancelled ? 'disabled' : ''}}>
-                                        Cancel Quotation
+                                        <i class="align-middle" data-feather="x"></i> Cancel Quotation
                                     </a>
                                     @endif
                                 @endif
 
-                                <a href="#" onclick="event.preventDefault(); 
-                                        if (confirm('Are you sure you want to delete this?')) { 
+                                <a href="#" onclick="event.preventDefault();
+                                        if (confirm('Are you sure you want to delete this?')) {
                                             document.getElementById('uuid').value = '{{$quote->uuid}}';
                                             document.getElementById('delete-quotation-form').submit();
-                                        }" 
+                                        }"
                                     class="btn btn-danger btn-sm">
+                                    <i class="align-middle" data-feather="trash-2"></i> 
                                      Delete
                                 </a>
                             </div>
-                        
+
                             <!-- Hidden Form for Deletion -->
                             <form id="delete-quotation-form" action="{{ route('admin.quotation.delete') }}" method="POST" style="display: none;">
                                 @csrf
@@ -143,9 +144,9 @@
                                 <input type="text" name="uuid" id="uuid">
                             </form>
                         </td>
-                        
+
                     </tr>
-                    
+
                 @endforeach
             </tbody>
           </table>

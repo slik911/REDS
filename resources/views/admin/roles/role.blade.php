@@ -29,20 +29,20 @@
                         <td>
                             @if ($role->status == 1)
                                 <span class="badge bg-success">Active</span>
-                                
+
                             @else
                                 <span class="badge bg-danger">Inactive</span>
                             @endif
                         </td>
                         <td>
-                            <a href="{{route('admin.role.edit', ['uuid'=>$role->uuid])}}" class="btn btn-primary"> <i class="align-middle" data-feather="edit"></i> Edit</a>
-                            <a href="#" 
-                                onclick="event.preventDefault(); 
-                                        if (confirm('Are you sure you want to delete this?')) { 
+                            <a href="{{route('admin.role.edit', ['uuid'=>$role->uuid])}}" class="btn btn-primary btn-sm"> <i class="align-middle" data-feather="edit"></i> Edit</a>
+                            <a href="#"
+                                onclick="event.preventDefault();
+                                        if (confirm('Are you sure you want to delete this?')) {
                                             //dynamically parsing the current row id to the form
                                             document.getElementById('uuid').value = '{{$role->uuid}}';
-                                            document.getElementById('delete-role-form').submit();}" 
-                                class="btn btn-danger">
+                                            document.getElementById('delete-role-form').submit();}"
+                                class="btn btn-sm btn-danger">
                                  <i class="align-middle" data-feather="trash-2"></i> Delete
                              </a>
                              <form id="delete-role-form" action="{{ route('admin.role.delete') }}" method="POST" style="display: none;">
@@ -52,7 +52,7 @@
                              </form>
                         </td>
                     </tr>
-                    
+
                 @endforeach
             </tbody>
           </table>

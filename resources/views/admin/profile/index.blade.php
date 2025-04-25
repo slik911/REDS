@@ -63,7 +63,7 @@
                     <label for="post_code" class="form-label">Postal Code</label>
                     <input type="text" class="form-control " id="postal_code" value="{{$staff->postal_code ? $staff->postal_code : old('postal_code') }}" name="postal_code" placeholder="### ###">
                 </div>
-                
+
             </div>
         </div>
         <div class="col-md-3">
@@ -72,12 +72,30 @@
                     <img src="{{$staff->image_id ? $staff->image->url : ''}}" id="blah" alt="" class="img-fluid" style="height:100%; width:100%; object-fit:cover">
                 </div>
                 <input class="form-control" type="file" id="imageStaff" value="{{old('image')}}" name="image">
-                
+
             </div>
         </div>
     </div>
     <button type="submit" class="btn btn-primary">Save Changes</button>
    </form>
+
+   <h2 class="mt-5">Update Password</h2>
+
+   <div class="row">
+        <form action="{{route('admin.profile.update.password')}}" method="post">
+            @csrf
+            @method('PUT')
+            <div class="mb-3 col-md-6">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control col-md-8" id="password" name="password" value="">
+            </div>
+            <div class="mb-3 col-md-6">
+                    <label for="password_confirmation" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control col-md-8" id="password_confirmation" name="password_confirmation" value="">
+            </div>
+                <button type="submit" class="btn btn-primary">Update Password</button>
+        </form>
+   </div>
 @endsection
 
 @section('scripts')

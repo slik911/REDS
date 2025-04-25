@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Mail;
 class WebController extends Controller
 {
     public function index(){
-        $services = ServiceList::with('image')->limit(4)->get();
+        $services = ServiceList::with('image')->where('status', 1)->limit(4)->get();
         $rentals =  Post::has('rental')->with('rental')->orderBy('id', 'desc')->where('status', true)->get();
         $testimonials = Testimonial::with('client')->inRandomOrder()->limit(3)->get();
         $projects = Post::doesnthave('rental')->inRandomOrder()->limit(3)->where('status', true)->get();

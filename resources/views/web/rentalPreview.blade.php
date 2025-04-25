@@ -64,7 +64,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 /* position: relative; */
 width: auto;
 overflow-x: auto;
-overflow-y: hidden;	
+overflow-y: hidden;
 
 white-space: nowrap;
 }
@@ -130,11 +130,11 @@ $('.thumb').eq(0).addClass('current');
 
 // Select thumbnail function
 $('.thumb').click(function() {
-	
+
 	// Make clicked thumbnail selected
 	$('.thumb').removeClass('current');
 	$(this).addClass('current');
-	
+
 	// Apply chosen image to main_preview
 	var imageSrc = $(this).css('background-image');
 	$('.main_preview').css('background-image', imageSrc);
@@ -142,7 +142,7 @@ $('.thumb').click(function() {
 	setTimeout(function() {
 		$('.main_preview').removeClass('main_preview-selected');
 	}, 500);
-	
+
 	// Change text to show current image number
 	var imageIndex = $(this).index();
 	// $('.gallery .inner .main_preview span').html('Image ' + (imageIndex + 1) + ' of ' + noOfImages);
@@ -165,7 +165,7 @@ $(document).keyup(function(e) {
 	var nextThumb = $('.thumb').eq(nextThumbIndex);
 	currentThumb.removeClass('current');
 	nextThumb.addClass('current');
-	
+
 	// Switch main_preview image
 	var imageSrc = nextThumb.css('background-image');
 	$('.main_preview').css('background-image', imageSrc);
@@ -173,14 +173,14 @@ $(document).keyup(function(e) {
 	setTimeout(function() {
 		$('.main_preview').removeClass('main_preview-selected');
 	}, 500);
-	
+
 	// Change text to show current image number
 	// $('.gallery .inner .main_preview span').html('Image ' + (nextThumbIndex+1) + ' of ' + noOfImages);
-	
+
   }
-  
+
   // If left arrow
-  if (e.keyCode === 37) { 
+  if (e.keyCode === 37) {
 
 	// Mark current thumbnail
 	var currentThumb = $('.thumb.current');
@@ -193,7 +193,7 @@ $(document).keyup(function(e) {
 	var prevThumb = $('.thumb').eq(prevThumbIndex);
 	currentThumb.removeClass('current');
 	prevThumb.addClass('current');
-	
+
 	// Switch main_preview image
 	var imageSrc = prevThumb.css('background-image');
 	$('.main_preview').css('background-image', imageSrc);
@@ -201,12 +201,12 @@ $(document).keyup(function(e) {
 	setTimeout(function() {
 		$('.main_preview').removeClass('main_preview-selected');
 	}, 500);
-	
+
 	// Change text to show current image number
 	$('.gallery .inner .main_preview span').html('Image ' + (prevThumbIndex+1) + ' of ' + noOfImages);
-	
+
   }
-    
+
 });
 
   </script>
@@ -215,9 +215,9 @@ $(document).keyup(function(e) {
 <div id="home-carousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active c-item">
-            <img src="{{asset('assets/Frame 3.png')}}" class="d-block w-100 c-img" alt="carousel1">
+            <img src="{{asset('assets/rental2.jpg')}}" class="d-block w-100 c-img" alt="carousel1">
             <div class="carousel-caption cbanner-caption">
-                <h1>RENTALS</h1>
+                <h1>Rentals</h1>
                 <nav class="breadcrumb-nav" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
@@ -239,7 +239,7 @@ $(document).keyup(function(e) {
               {{$rental->title}}
           </h1>
           <div class="gallery">
-            
+
             @foreach ($rental->uploads as $uploads)
             <img src="{{$uploads->url}}" />
             @endforeach
@@ -253,7 +253,7 @@ $(document).keyup(function(e) {
             {!!$rental->description!!}
           </p>
 
-          
+
           <section>
             <h5 style="font-weight:bold">
               Features
@@ -286,8 +286,8 @@ $(document).keyup(function(e) {
                     <div class="card-text">
                         <p style="font-size: 12px !important">
                             {{ substr(strip_tags($rental->description), 0, 100)}}...
-                        </p>   
-                        <h6 style="font-weight:bold; color:#0A2540; font-size:13px">CAD {{number_format($rental->rental->price)}}</h6> 
+                        </p>
+                        <h6 style="font-weight:bold; color:#0A2540; font-size:13px">CAD {{number_format($rental->rental->price)}}</h6>
                     </div>
                 </div>
             </div>

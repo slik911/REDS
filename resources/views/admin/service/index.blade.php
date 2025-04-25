@@ -29,19 +29,27 @@
                         <td>
                             @if ($service->status == 1)
                                 <span class="badge bg-success">Active</span>
-                                
+
                             @else
                                 <span class="badge bg-danger">Inactive</span>
                             @endif
                         </td>
                         <td>
                             <a href="{{route('admin.service.edit', ['uuid'=>$service->uuid])}}" class="btn btn-primary btn-sm"> <i class="align-middle" data-feather="edit"></i> Edit</a>
-                            <a href="#" 
-                                onclick="event.preventDefault(); 
-                                        if (confirm('Are you sure you want to delete this?')) { 
+
+                            @if ($service->status == 1)
+                                <a href="{{route('admin.service.status', ['uuid'=> $service->uuid])}}" class="btn btn-sm btn-danger"><i class="align-middle" data-feather="x"></i> Deactivate</a>
+
+                            @else
+                                <a href="{{route('admin.service.status', ['uuid'=> $service->uuid])}}" class="btn btn-sm btn-success"><i class="align-middle" data-feather="check"></i> Activate</a>
+
+                            @endif
+                            <a href="#"
+                                onclick="event.preventDefault();
+                                        if (confirm('Are you sure you want to delete this?')) {
                                             //dynamically parsing the current row id to the form
                                             document.getElementById('uuid').value = '{{$service->uuid}}';
-                                            document.getElementById('delete-service-form').submit();}" 
+                                            document.getElementById('delete-service-form').submit();}"
                                 class="btn btn-danger btn-sm">
                                  <i class="align-middle" data-feather="trash-2"></i> Delete
                              </a>
@@ -52,7 +60,7 @@
                              </form>
                         </td>
                     </tr>
-                    
+
                 @endforeach
             </tbody>
           </table>

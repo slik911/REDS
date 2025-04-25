@@ -101,12 +101,12 @@
 @endsection
 @section('content')
        <!--Carousel Banner-->
-       <div id="home-carousel" class="carousel slide" data-bs-ride="carousel">
+    <div id="home-carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active c-item">
-                <img src="./assets/Frame 3.png" class="d-block w-100 c-img" alt="carousel1">
+                <img src="./assets/reno.jpg" class="d-block w-100 c-img" alt="carousel1">
                 <div class="carousel-caption cbanner-caption">
-                    <h1>EXPLORE OUR PROJECTS</h1>
+                    <h1>Explore Our Projects</h1>
                     <nav class="breadcrumb-nav" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>

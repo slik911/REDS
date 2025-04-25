@@ -16,12 +16,11 @@ class CategoryController extends Controller
     {
         $this->middleware('auth');
           //only admininistrators have access to this page
-          $this->middleware('AdminMiddleware');
     }
 
     public function index(Request $request)
     {
-        $categories = Category::orderBy('id', 'desc')->get();    
+        $categories = Category::orderBy('id', 'desc')->get();
         return view('admin.category.index', compact('categories'));
     }
 

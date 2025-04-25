@@ -21,13 +21,13 @@ class UserSeeder extends Seeder
         $id = DB::table('users')->insertGetId([
             'uuid' => $uuid,
             'email' => 'admin@gmail.com',
-            'first_name'=> 'john',
-            'last_name'=> 'doe',
-            'phone_number'=> '08123456789',
+            'first_name'=> 'Admin',
+            'last_name'=> 'User',
+            'phone_number'=> '5873947424',
             'address'=> 'Jl. Jendral Sudirman No. 1',
             'province'=> 'Alberta',
-            'city'=> 'Calgary',
-            'postal_code'=> '12345',
+            'city'=> 'Lethbridge',
+            'postal_code'=> 'T1J 4P4',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -41,7 +41,7 @@ class UserSeeder extends Seeder
 
         $role_id = DB::table('roles')->insertGetId([
             'uuid' => $role_uuid,
-            'name' => 'admin',
+            'name' => 'Super Admin',
             'created_at' => now(),
             'updated_at' => now(),
         ]);

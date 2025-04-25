@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Validations;
-        
+
 use Illuminate\Support\Facades\Validator;
-            
-class UserValidation    
+
+class UserValidation
 {
     /**
-     * This method take two args to get a specific 
+     * This method take two args to get a specific
      * set of rules and validates it via the incoming request.
      *
      * @param object \Illuminate\Http\Request $request
@@ -41,6 +41,10 @@ class UserValidation
                 "postal_code" => "string|required|regex:/^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/",
                 "role" => "string|required",
                 "image" => "nullable|image|mimes:jpeg,png,jpg,svg|max:2048",
+            ],
+
+            "update_password" => [
+                "password" => "string|required|min:8|confirmed",
             ]
         ][$key]);
     }

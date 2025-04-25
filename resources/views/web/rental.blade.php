@@ -15,12 +15,12 @@
 @endsection
 @section('content')
 
-      <div id="home-carousel" class="carousel slide" data-bs-ride="carousel">
+    <div id="home-carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active c-item">
-                <img src="{{asset('assets/Frame 3.png')}}" class="d-block w-100 c-img" alt="carousel1">
+                <img src="{{asset('assets/rental.jpg')}}" class="d-block w-100 c-img" alt="carousel1">
                 <div class="carousel-caption cbanner-caption">
-                    <h1>RENTALS</h1>
+                    <h1>Rentals</h1>
                     <nav class="breadcrumb-nav" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html" class="text-white  text-decoration-none  ">Home</a></li>
@@ -47,8 +47,8 @@
                         <div class="card-text">
                             <p style="font-size: 12px !important">
                                 {{ substr(strip_tags($rental->description), 0, 100)}}...
-                            </p>   
-                            <h6 style="font-weight:bold; color:#0A2540; font-size:13px">CAD {{number_format($rental->rental->price)}}</h6> 
+                            </p>
+                            <h6 style="font-weight:bold; color:#0A2540; font-size:13px">CAD {{number_format($rental->rental->price)}}</h6>
                         </div>
                     </div>
                 </div>
@@ -62,5 +62,4 @@
 
 @endsection
 
- 
-  
+

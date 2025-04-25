@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Mail;
 class QuotationController extends Controller
 {
     public function index(){
-        $quotations = Quotation::with('rfq', 'client', 'user')->get();
+        $quotations = Quotation::with('rfq', 'client', 'user')->orderBy('id', 'desc')->get();
         // dd($quotation);
         return view('admin.quotation.index', compact('quotations'));
     }
@@ -186,6 +186,76 @@ class QuotationController extends Controller
         $quotation = Quotation::with('rfq', 'client', 'user', 'service')->where('uuid', $quote_id)->first();
 
         return view('admin.quotation.preview', compact('quotation'));
+    }
+
+    public function edit($quote_id){
+        $quotation = Quotation::with('rfq', 'client', 'user', 'service')->where('uuid', $quote_id)->first();
+
+        $rfqs = RFQ::select('uuid', 'rfq_number')->get();
+        $clients = Client::select('uuid', 'first_name', 'last_name')->get();
+        $services = ServiceList::select('uuid', 'name')->get();
+        $tax = Tax::first();
+        $tax_rate = $tax ? $tax->rate : 0;
+
+        return view('admin.quotation.edit', compact('quotation', 'rfqs', 'clients', 'services', 'tax_rate'));
+    }
+
+    public function update(Request $request, QuotationValidation $rule){
+        $validated = $rule->validationRules($request, 'update');
+
+        if ($validated->fails()) {
+            notyf()->error($validated->errors()->first());
+            return redirect()->back()->withInput($request->all());
+        }
+
+        try {
+
+            DB::beginTransaction();
+            $total = 0;
+            foreach ($request->total as $key => $value) {
+                $total += $value;
+            }
+
+
+            $quotation = Quotation::where('quote_number', $request->quote_number)->update([
+                'client_id' => $request->client_uuid,
+                'rfq_id' => $request->rfq_id,
+                'quote_number' => $request->quote_number,
+                'user_id' => Auth::user()->uuid,
+                'sub_total' => $total,
+                'tax' => (Tax::first()->rate/100) * $total,
+                'total' => $total + ((Tax::first()->rate/100) * $total),
+                'status' => 'draft'
+            ]);
+
+
+            //delete old services
+            Service::where('quote_id', $request->uuid)->delete();
+
+
+            //create new services
+
+           foreach ($request->services as $key => $service) {
+                $services = Service::create([
+                    'quote_id' => $request->uuid,
+                    'service_list_id' => $service,
+                    'description' => $request->description[$key],
+                    'unit_price' => $request->unit_price[$key],
+                    'quantity' => $request->quantity[$key],
+                    'total' => $request->total[$key]
+                ]);
+            }
+
+            DB::commit();
+            notyf()->success('Quotation updated successfully.');
+            return redirect()->route('admin.quotation');
+
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            DB::rollBack();
+            notyf()->error('An error occurred while creating quotation.');
+            return redirect()->back()->withInput($request->all());
+        }
     }
 
     public function cancel(Request $request){

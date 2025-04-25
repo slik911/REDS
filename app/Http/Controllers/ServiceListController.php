@@ -18,12 +18,12 @@ class ServiceListController extends Controller
     {
         $this->middleware('auth');
           //only admininistrators have access to this page
-          $this->middleware('AdminMiddleware');
+
     }
 
     public function index(Request $request)
     {
-        $services = ServiceList::orderBy('id', 'desc')->get();    
+        $services = ServiceList::orderBy('id', 'desc')->get();
         return view('admin.service.index', compact('services'));
     }
 
@@ -42,7 +42,7 @@ class ServiceListController extends Controller
         }
 
         try {
-            
+
 
             if ($request->hasFile('image')) {
                 //upload image to cloudinary and returns the image url
@@ -106,6 +106,20 @@ class ServiceListController extends Controller
             return redirect()->back();
         }
 
+    }
+
+    public function updateStatus(Request $request): RedirectResponse
+    {
+        try {
+            $service = ServiceList::where('uuid', $request->uuid)->first();
+            $service->status = !$service->status;
+            $service->save();
+            notyf()->success('Service status updated successfully');
+            return redirect()->route('admin.service');
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return redirect()->back();
+        }
     }
 
     public function delete(Request $request): RedirectResponse

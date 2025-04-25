@@ -24,26 +24,33 @@
             </thead>
             <tbody>
 
-         
+
 
                 @foreach ($staff as $user)
-                    <tr> 
+                    <tr>
                         <td>
                             <input type="checkbox" class="form-check-input">
-                        </td> 
+                        </td>
                         <td>{{$user->created_at->format('M-d-Y')}}</td>
                         <td style="text-transform:capitalize">{{$user->last_name}} {{$user->first_name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{ preg_replace("/(\d{3})(\d{3})(\d{4})/", '($1)-$2-$3', $user->phone_number)}}</td>
                         <td>
-                            <a href="{{route('admin.staff.edit', ['uuid'=>$user->uuid])}}" class="btn btn-primary"> <i class="align-middle" data-feather="edit"></i> Preview</a>
-                            <a href="#" 
-                                onclick="event.preventDefault(); 
-                                        if (confirm('Are you sure you want to delete this?')) { 
+                            @if ($user->credential)
+                                @if ($user->credential->status == 1)
+                                    <a href="{{route('admin.staff.status', ['uuid'=> $user->uuid])}}" class="btn btn-sm btn-danger"><i class="align-middle" data-feather="x"></i> Deactivate</a>
+                                @else
+                                    <a href="{{route('admin.staff.status', ['uuid'=> $user->uuid])}}" class="btn btn-sm btn-success"><i class="align-middle" data-feather="check"></i> Activate</a>
+                                @endif
+                            @endif
+                            <a href="{{route('admin.staff.edit', ['uuid'=>$user->uuid])}}" class="btn btn-primary btn-sm"> <i class="align-middle" data-feather="edit"></i> Preview</a>
+                            <a href="#"
+                                onclick="event.preventDefault();
+                                        if (confirm('Are you sure you want to delete this?')) {
                                             //dynamically parsing the current row id to the form
                                             document.getElementById('uuid').value = '{{$user->uuid}}';
-                                            document.getElementById('delete-staff-form').submit();}" 
-                                class="btn btn-danger">
+                                            document.getElementById('delete-staff-form').submit();}"
+                                class="btn btn-sm btn-danger">
                                  <i class="align-middle" data-feather="trash-2"></i> Delete
                              </a>
                              <form id="delete-staff-form" action="{{route('admin.staff.delete')}}" method="POST" style="display: none;">

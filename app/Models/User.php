@@ -32,7 +32,7 @@ class User extends Authenticatable
         'city',
         'postal_code',
         'image_id',
-        
+
     ];
 
     /**
@@ -56,6 +56,11 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             // 'password' => 'hashed',
         ];
+    }
+
+    public function credential()
+    {
+        return $this->hasOne(Credential::class, 'user_id', 'uuid');
     }
 
     public function image()

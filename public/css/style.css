@@ -18,8 +18,8 @@ body {
 }
 
 .nav-item .btn{
-    background-color: #d9d9d9; 
-    color: black; 
+    background-color: #d9d9d9;
+    color: black;
     font-size: small;
     padding: 10px 20px;
     border-radius: 0%;
@@ -38,7 +38,7 @@ body {
 .c-img {
     height: 100%;
     object-fit: cover;
-    filter:brightness(0.4); 
+    filter:brightness(0.4);
 }
 
 .c-caption {
@@ -52,8 +52,8 @@ body {
 } */
 
 .c-caption .btn {
-    background-color: #b5b5b5; 
-    color: black; 
+    background-color: #b5b5b5;
+    color: black;
     font-size: small;
     padding: 10px 20px;
     border-radius: 0%;
@@ -62,8 +62,8 @@ body {
 
 /* Who we are section*/
 .home-who-we-are .btn {
-    background-color: #0A2540; 
-    color: white; 
+    background-color: #0A2540;
+    color: white;
     font-size: small;
     padding: 10px 20px;
     margin-top: 5%;
@@ -79,8 +79,8 @@ body {
 }
 
 .recent-projects .btn {
-    background-color: #0A2540; 
-    color: white; 
+    background-color: #0A2540;
+    color: white;
     font-size: small;
     padding: 10px 20px;
     margin-top: 2%;
@@ -104,8 +104,8 @@ body {
 
 
 #home-services button {
-    background-color: #0A2540; 
-    color: white; 
+    background-color: #0A2540;
+    color: white;
     font-size: small;
     padding: 10px 20px;
 }
@@ -135,11 +135,11 @@ body {
 
 /********<<<<<<<<<<<<<<<<<<< About.html Page>>>>>>>>>>>>>>***************/
 
-.about-section h1 {
+/* .about-section h1 {
     font-size: 3rem;
     font-weight: bold;
     margin-bottom: 2%;
-}
+} */
 
 .cbanner-caption {
     text-align: center;
@@ -153,15 +153,35 @@ body {
 }
 
 .cbanner-caption a {
-    color: white; 
+    color: white;
     font-size: small;
 }
 
 .breadcrumb-nav {
-    --bs-breadcrumb-divider: '>>';
-    --bs-breadcrumb-divider-color: white;
-    font-weight: bold;
-    justify-self: center;
+    display: flex;
+    justify-content: center;
+}
+
+.breadcrumb {
+    --bs-breadcrumb-divider: '/';
+
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: white;
+}
+
+.breadcrumb-item.active {
+    color: #ffffff;
+}
+
+.breadcrumb-item a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+    color: rgba(255, 255, 255, 0.85);
 }
 
 /*********<<<<<<<<<<<<< rfq.html Page and Contact.html Page>>>>>>>>>>>>***/
@@ -205,14 +225,14 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
-    background-color: #d9d9d9; 
-    color: black; 
+    background-color: #d9d9d9;
+    color: black;
     font-size: small;
     padding: 10px 20px;
     border-radius: 0%;
     text-align: center;
 }
- 
+
 .post-img button:hover {
     background-color: #0A2540;
     color: white;
