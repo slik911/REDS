@@ -164,7 +164,7 @@
                                 <td>{{$rfq->client->first_name}} {{$rfq->client->last_name}} </td>
 
                                 <td> <a href="{{route('admin.rfq.preview', ['uuid'=>$rfq->uuid])}}" class="btn btn-primary btn-sm"> <i class="align-middle" data-feather="eye"></i> Preview</a></td>
-                                <td><a href="{{route('admin.quotation', ['uuid'=>$rfq->uuid])}}" class="btn btn-success btn-sm"> <i class="align-middle" data-feather="file"></i> Generate Quote</a></td>
+                                <td><a href="{{route('admin.quotation.create', ['client_id'=> $rfq->client->uuid,'rfq_id'=>$rfq->uuid])}}" class="btn btn-success btn-sm"> <i class="align-middle" data-feather="file"></i> Generate Quote</a></td>
                                 <td></td>
                             </tr>
                         @endforeach

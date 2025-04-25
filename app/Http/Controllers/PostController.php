@@ -28,6 +28,7 @@ class PostController extends Controller
 
     public function store(Request $request, PostValidation $rule){
 
+
         $validated = $rule->validationRules($request, 'create');
 
         if ($validated->fails()) {
@@ -130,18 +131,29 @@ class PostController extends Controller
     public function update(Request $request, PostValidation $rule){
         $validated = $rule->validationRules($request, 'update');
 
+
+
         if ($validated->fails()) {
             notyf()->error($validated->errors()->first());
             return redirect()->back();
         }
 
+
+
         try {
             DB::beginTransaction();
 
-            if(!PostUpload::where('post_id', $request->post_id)->exists()){
+
+
+            if(!PostUpload::where('post_id', $request->post_id)->exists() && !$request->has('images')) {
                 notyf()->error('Upload at least one image');
                 return redirect()->back();
             }
+
+
+
+
+
 
             $post = Post::where('uuid', $request->post_id)->first();
             $post->title = $request->title;
@@ -149,6 +161,8 @@ class PostController extends Controller
             $post->description = $request->description;
             $post->status = false;
             $post->save();
+
+
 
             //upload image
             if ($request->has('images')) {

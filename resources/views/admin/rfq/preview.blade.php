@@ -8,7 +8,7 @@
     @method('PUT')
     <div class="row">
         <div class="col-md-6">
-            
+
             <div class="row">
                 <div class="mb-3 col-md-12">
                     <label for="">RFQ Number</label>
@@ -51,20 +51,20 @@
                 <div class="mb-3 col-md-4">
                     <label for="post_code" class="form-label">Postal Code</label>
                     <input type="text" class="form-control " id="postal_code" value="{{$rfq->postal_code}}" readonly name="postal_code" placeholder="### ###">
-                </div> 
+                </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="mb-3 col-md-12">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control " id="title" value="{{$rfq->title}}" readonly name="title" >
-            </div> 
+            </div>
             <label for="">Description</label>
             <textarea name="" id="" class="form-control" cols="30" readonly rows="10" value="{{$rfq->description}}">{{$rfq->description}}</textarea>
         </div>
 
     </div>
-    <a href="{{route('admin.quotation')}}" class="btn btn-primary">Generate Quotation</a>
+    <a href="{{route('admin.quotation.create', ['client_id'=> $rfq->client->uuid,'rfq_id'=>$rfq->uuid])}}" class="btn btn-primary">Generate Quotation</a>
    </form>
 @endsection
 

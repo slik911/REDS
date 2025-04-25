@@ -118,10 +118,11 @@ class RentalController extends Controller
         try {
             DB::beginTransaction();
 
-            if(!PostUpload::where('post_id', $request->post_id)->exists()){
+            if(!PostUpload::where('post_id', $request->post_id)->exists() && !$request->has('images')) {
                 notyf()->error('Upload at least one image');
                 return redirect()->back();
             }
+            
             $post = Post::where('uuid', $request->post_id)->first();
             $post->title = $request->title;
             $post->slug = Str::slug($request->title, '_');

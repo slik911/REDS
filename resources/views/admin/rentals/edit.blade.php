@@ -79,7 +79,7 @@
 
 
         function deleteImage(postId, url) {
-        $(button).prop('disabled', true).text('Deleting...');
+        // $(button).prop('disabled', true).text('Deleting...');
         $.ajax({
             url: '/delete/image',
             type: 'POST',
@@ -108,7 +108,7 @@
         });
     }
 
-    
+
     $("#features-container").on("click", ".add-feature", function () {
         let featureRow = `
             <div class="row feature-row mb-2">
@@ -213,9 +213,9 @@
 
                             $count = 0;
                     @endphp
-        
+
                     @foreach (json_decode($post->rental->meta_data) as $key => $value)
-        
+
                     <div class="row feature-row mb-2">
                         <div class="col-md-5">
                             <select name="features[]" class="form-select">
@@ -250,7 +250,7 @@
                 <trix-toolbar id="my_toolbar"></trix-toolbar>
                 <input id="my_input" type="hidden" name="description" value="{{$post->description}}">
                 <trix-editor toolbar="my_toolbar" input="my_input" style="min-height: 300px;">
-                    
+
                 </trix-editor>
 
             </div>

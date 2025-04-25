@@ -79,7 +79,7 @@
 
 
         function deleteImage(postId, url) {
-        $(button).prop('disabled', true).text('Deleting...');
+        // $(button).prop('disabled', true).text('Deleting...');
         $.ajax({
             url: '/delete/image',
             type: 'POST',
@@ -136,7 +136,7 @@
                 <trix-toolbar id="my_toolbar"></trix-toolbar>
                 <input id="my_input" type="hidden" name="description" value="{{$post->description}}">
                 <trix-editor toolbar="my_toolbar" input="my_input" style="min-height: 300px;">
-                    
+
                 </trix-editor>
 
             </div>
@@ -159,6 +159,7 @@
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">Update Renovation Post</button>
+    <input type="submit" value="Update" class="btn btn-primary mt-3">
+    {{-- <in type="submit" class="btn btn-primary">Update Renovation Post</button> --}}
    </form>
 @endsection

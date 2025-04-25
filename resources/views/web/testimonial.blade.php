@@ -2,7 +2,7 @@
 @section('styles')
     <style>
         .jumbotron{
-            background-image: url('../assets/Frame 3.png');
+            background-image: url('../assets/contact.jpg');
             background-position: center;
             background-size: cover;
             height:400px;
@@ -16,17 +16,24 @@
   </style>
 @endsection
 @section('content')
-      <div class="jumbotron jumbotron-fluid d-flex align-items-center">
-        <div class="container text-center">
-          <h1 class="display-4">Testimonial</h1>
-          <nav class="breadcrumb-nav" aria-label="breadcrumb">
-            <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
-            <li class="breadcrumb-item active text-white" aria-current="page">Testimonial</li>
-            </ol>
-        </nav>
+
+          <div id="home-carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active c-item">
+                <img src="{{asset('assets/contact.jpg')}}" class="d-block w-100 c-img" alt="carousel1">
+                <div class="carousel-caption cbanner-caption">
+                    <h1>Testimonial</h1>
+                    <nav class="breadcrumb-nav" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html" class="text-white  text-decoration-none  ">Home</a></li>
+                         <li class="breadcrumb-item active text-white" aria-current="page">Testimonial</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
         </div>
-      </div>
+    </div>
+
       <section class="content">
         <div class="container mx-auto my-5">
               <div class="row">

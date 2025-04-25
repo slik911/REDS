@@ -254,8 +254,7 @@
     <section class="testimonials">
         <div class="container text-align center">
             <p><h1 style="text-align: center;">Testimonials</h1></p>
-            <p style="text-align: center;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi unde impedit, necessitatibus, soluta sit quam minima expedita atque
-                corrupti reiciendis.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            <p style="text-align: center;">We take pride in every project we complete, and nothing means more to us than hearing from satisfied clients. Here’s what some of our customers have shared about their experience with our painting services
             </p>
             <div class="row">
                 @foreach ($testimonials as $testimonial)
@@ -267,9 +266,9 @@
                         </div>
                         <div class="card-text">
                             <p style="text-align: center;">
-                                {{substr(strip_tags($testimonial->message), 0, 100)}}...
+                                {{substr(strip_tags($testimonial->message), 0, 100)}}
                                 <br>
-                                <img src="{{asset('assets/quotation-marks.svg')}}" alt="quotation-marks" width="25" height="25">
+                                {{-- <img src="{{asset('assets/quotation-marks.svg')}}" alt="quotation-marks" width="25" height="25"> --}}
                             </p>
                         </div>
                     </div>
