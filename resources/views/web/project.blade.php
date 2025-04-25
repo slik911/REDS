@@ -120,7 +120,7 @@
     </div>
 
     <!--Projects Display Section-->
-    <section class="projects">
+    <section class="projects mt-5">
         <div class="container">
             <div class="row">
                 @foreach ($projects as $project)
