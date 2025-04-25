@@ -25,6 +25,7 @@ Route::get('/privacy', [App\Http\Controllers\WebController::class, 'privacy'])->
 Route::get('/terms', [App\Http\Controllers\WebController::class, 'terms'])->name('terms');
 Route::get('/feedback/{uuid}', [App\Http\Controllers\WebController::class, 'testimonial'])->name('feedback.show');
 Route::post('/feedback', [App\Http\Controllers\WebController::class, 'storeTestimonial'])->name('feedback.store');
+Route::post('rfq/create', [App\Http\Controllers\RFQController::class, 'store'])->name('admin.rfq.store');
 
 Auth::routes();
 
@@ -78,7 +79,7 @@ Route::delete('category/delete', [App\Http\Controllers\CategoryController::class
 });
 
 Route::get('rfq', [App\Http\Controllers\RFQController::class, 'index'])->name('admin.rfq');
-Route::post('rfq/create', [App\Http\Controllers\RFQController::class, 'store'])->name('admin.rfq.store');
+
 Route::get('rfq/view/{uuid}', [App\Http\Controllers\RFQController::class, 'view'])->name('admin.rfq.view');
 Route::get('rfq/preview/{uuid}', [App\Http\Controllers\RFQController::class, 'preview'])->name('admin.rfq.preview');
 

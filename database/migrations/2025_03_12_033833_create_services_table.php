@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('uuid')->unique();
             $table->string('service_list_id');
             $table->string('quote_id');
-            $table->string('description');
+            $table->text('description');
             $table->decimal('unit_price', 10, 2);
             $table->integer('quantity')->default(1);
             $table->decimal('total', 10, 2);

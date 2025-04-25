@@ -52,5 +52,11 @@ class UserSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
+        DB::table('taxes')->insert([
+               'rate' => 5,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 }
