@@ -3,7 +3,7 @@
 
     <!--Carousel-->
     <div class="carousel-item active c-item">
-        <img src="./assets/Frame 3.png" class="d-block w-100 c-img" alt="carousel1">
+        <img src="./assets/contact.jpg" class="d-block w-100 c-img" alt="carousel1">
         <div class="carousel-caption cbanner-caption">
             <h1>Get a quote for your project</h1>
 

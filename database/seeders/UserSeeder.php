@@ -41,7 +41,7 @@ class UserSeeder extends Seeder
 
         $role_id = DB::table('roles')->insertGetId([
             'uuid' => $role_uuid,
-            'name' => 'Super Admin',
+            'name' => 'super-admin',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
