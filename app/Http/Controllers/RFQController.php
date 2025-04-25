@@ -60,7 +60,7 @@ class RFQController extends Controller
 
             $mailData = [
                 'title' => 'New Quote Request Submitted',
-                'name' => 'First Vision Contracting',
+                'name' => 'Justice',
                 'body' => 'A new request for quote has just been submitted on your platform. Please log in to the admin dashboard to review the details.',
             ];
 
